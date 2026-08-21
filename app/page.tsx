@@ -80,7 +80,7 @@ export default function Page() {
         <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`}>
           <a href="#challenges" onClick={() => setMenuOpen(false)}>CHALLENGES</a><a href="#how-it-works" onClick={() => setMenuOpen(false)}>HOW IT WORKS</a><a href="#rules" onClick={() => setMenuOpen(false)}>RULES</a><a href="#platforms" onClick={() => setMenuOpen(false)}>PLATFORMS</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         </div>
-        <div className="nav-actions"><a className="nav-community" href="#community">COMMUNITY</a><a className="portal-link" href="#dashboard">TRADER PORTAL</a><a className="button button-small" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a></div>
+        <div className="nav-actions"><a className="nav-community" href="#community">COMMUNITY</a><a className="portal-link" href="#dashboard">TRADER PORTAL</a><a className="nav-login" href="#footer">LOGIN / REGISTER</a><a className="button button-small" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a></div>
         <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
 

@@ -55,7 +55,9 @@ button { color: inherit; font: inherit; }
 .button { display: inline-flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 5px; background: #6366f1; color: #fff; font: 800 13px Arial,sans-serif; letter-spacing: .1em; box-shadow: 0 10px 32px rgba(99,102,241,.25); transition: transform .2s, background .2s; }
 .button:hover { transform: translateY(-2px); background: #7c7ff5; }
 .button svg, .text-link svg, .footer-mail svg { width: 15px; height: 15px; }
-.button-small { padding: 10px 13px; font-size: 13px; }
+  .button-small { padding: 10px 13px; font-size: 13px; }
+  .nav-login { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; border: 1px solid rgba(255,255,255,.16); border-radius: 7px; background: rgba(255,255,255,.08); color: #ffffff; font: 700 13px Arial,sans-serif; letter-spacing: .04em; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 8px 24px rgba(0,0,0,.18); transition: background .2s, border-color .2s, transform .2s; }
+  .nav-login:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.28); transform: translateY(-1px); }
 .button-outline { background: transparent; border: 1px solid rgba(99,102,241,.65); box-shadow: none; }
 .text-link { display: inline-flex; align-items: center; gap: 9px; font: 800 13px Arial; letter-spacing: .1em; color: #b6c0d8; }
   .text-link:hover { color: #38bdf8; }
