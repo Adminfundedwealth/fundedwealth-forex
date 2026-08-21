@@ -172,7 +172,8 @@ button { color: inherit; font: inherit; }
   h1,h2,h3 { margin: 0; font-family: Arial,sans-serif; }
   h1 { width: 100%; margin: 30px auto 30px; font-size: clamp(42px, 5vw, 76px); font-weight: 500; line-height: .94; letter-spacing: -.06em; }
   h1 span, h2 em { color: #6366f1; font-style: normal; }
-  .hero-text { max-width: 650px; margin: 0 auto; color: #a3aec5; font-size: 18px; line-height: 1.62; }
+  .hero-text { position: relative; top: 55px; z-index: 5; max-width: 650px; margin: 0 auto; color: #a3aec5; font-size: 18px; line-height: 1.62; }
+  @media (max-width: 760px) { .hero-text { top: 30px; } }
 .hero-buttons { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 84px; }
  .hero-stats { display: flex; justify-content: center; gap: 0; margin: 36px auto 0; }
   .hero-stats div { width: 160px; }
