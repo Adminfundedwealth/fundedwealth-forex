@@ -60,11 +60,11 @@ button { color: inherit; font: inherit; }
 .text-link { display: inline-flex; align-items: center; gap: 9px; font: 800 13px Arial; letter-spacing: .1em; color: #b6c0d8; }
 .text-link:hover { color: #38bdf8; }
 .menu-toggle { display: none; border: 0; background: transparent; }
-.hero-section { position: relative; min-height: 850px; display: flex; align-items: center; justify-content: center; padding: 155px 7.5% 105px; text-align: center; overflow: hidden; background: radial-gradient(circle at 50% 42%, rgba(55,76,175,.14), transparent 34%), #03050c; }
-.hero-section:after { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background: linear-gradient(90deg, rgba(3,5,12,.96) 0%, rgba(3,5,12,.78) 37%, rgba(3,5,12,.28) 70%, rgba(3,5,12,.58) 100%), linear-gradient(180deg, rgba(3,5,12,.18), rgba(3,5,12,.66)); }
-.hero-art { position:absolute; z-index:0; inset:0 0 0 36%; overflow:hidden; opacity:.88; }
-.hero-art:after { content:''; position:absolute; inset:0; background: radial-gradient(circle at 58% 50%, transparent 18%, rgba(3,5,12,.16) 58%, #03050c 100%); }
-.hero-art img { width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(.88) contrast(1.08) brightness(.72); transform:scale(1.04); }
+.hero-section { position: relative; min-height: 850px; display: flex; align-items: center; justify-content: center; padding: 155px 7.5% 105px; text-align: center; overflow: hidden; background: #03050c; }
+.hero-section:after { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background: linear-gradient(180deg, rgba(3,5,12,.62) 0%, rgba(3,5,12,.2) 34%, rgba(3,5,12,.38) 70%, rgba(3,5,12,.9) 100%), radial-gradient(ellipse at center, rgba(3,5,12,.08) 18%, rgba(3,5,12,.56) 78%); }
+.hero-art { position:absolute; z-index:0; inset:0; overflow:hidden; opacity:.8; }
+.hero-art:after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center 45%, transparent 12%, rgba(3,5,12,.12) 50%, rgba(3,5,12,.72) 100%); }
+.hero-art img { width:100%; height:100%; object-fit:cover; object-position:center center; filter:saturate(.88) contrast(1.08) brightness(.62); transform:scale(1.02); }
 .hero-copy { position:relative; z-index:2; }
 @keyframes aura-breathe { 0%,100% { transform: scale(.96); opacity: .72; } 50% { transform: scale(1.04); opacity: 1; } }
 @keyframes core-float { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-10px,0); } }
