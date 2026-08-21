@@ -179,12 +179,12 @@ button { color: inherit; font: inherit; }
 .hero-stats div { padding-left: 15px; border-left: 1px solid rgba(148,163,184,.2); }
 .hero-stats strong { display: block; color: #e7ecfb; font-size: 21px; letter-spacing: -.03em; }
   .hero-stats span { display: block; margin-top: 7px; color: #91a0bc; font-size: 12px; }
-  /* Keep the lower hero controls beneath the astronaut's feet. */
-  .hero-buttons { transform: translateY(250px); }
-  .hero-stats { transform: translateY(250px); }
+  /* Keep the hero controls clearly above the astronaut's feet. */
+  .hero-buttons { transform: translateY(120px); }
+  .hero-stats { transform: translateY(120px); }
   @media (max-width: 760px) {
-    .hero-buttons { transform: translateY(120px); }
-    .hero-stats { transform: translateY(120px); }
+    .hero-buttons { transform: translateY(55px); }
+    .hero-stats { transform: translateY(55px); }
   }
 .scroll-cue { position: absolute; bottom: 35px; left: 7.5%; display: flex; align-items: center; gap: 12px; color: #8190ad; font: 700 12px Arial; letter-spacing: .16em; }
 .scroll-cue span { width: 29px; height: 1px; background: #38bdf8; }
