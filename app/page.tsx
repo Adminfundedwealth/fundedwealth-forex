@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowDownRight,
   ArrowRight,
@@ -54,6 +54,103 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span />{children}</p>
 }
 
+const marketInstruments = [
+  'EUR/USD','GBP/USD','USD/JPY','USD/CHF','AUD/USD','USD/CAD','NZD/USD','EUR/GBP','EUR/JPY','GBP/JPY',
+  'XAU/USD','XAG/USD','BTC/USD','ETH/USD','SOL/USD','US30','NAS100','SPX500','US500','GER40','UK100','JPN225',
+  'NIFTY50','BANKNIFTY','SENSEX','EUR/CHF','GBP/CHF','AUD/JPY','CAD/JPY','NZD/JPY','EUR/AUD','GBP/AUD','AUD/CAD',
+  'USD/SGD','USD/HKD','USD/MXN','USD/ZAR','USD/TRY','USD/NOK','USD/SEK','EUR/NOK','EUR/SEK','GBP/NZD','CHF/JPY',
+  'USOIL','UKOIL','NATGAS','COPPER','PLATINUM','PALLADIUM','DAX40','FRA40','ESP35','ITA40','AUS200','HK50',
+  'CHINA50','VIX','RUSSELL2K','DOW30','USTEC','US100','US2000','SPX','FTSE100','CAC40','IBEX35','STOXX50',
+  'ASX200','KOSPI','TAIEX','AAPL','TSLA','NVDA','MSFT','AMZN','META','GOOGL','AMD','NFLX','COIN','MSTR',
+  'BTC/ETH','ETH/USD','BNB/USD','XRP/USD','ADA/USD','DOGE/USD','AVAX/USD','DOT/USD','LINK/USD','LTC/USD',
+  'ATOM/USD','MATIC/USD','SOL/USDT','BTC/USDT','ETH/USDT','DEFI','TOTAL3','CRYPTO10','US10Y','DXY','FEDFUNDS',
+]
+
+function MarketInstrumentParticles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const context = canvas.getContext('2d')
+    if (!context) return
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const pointer = { x: 0, y: 0 }
+    const points = marketInstruments.map((label, index) => {
+      const seed = (index * 9301 + 49297) % 233280 / 233280
+      const layer = index % 10 < 4 ? 0 : index % 10 < 8 ? 1 : 2
+      const x = index % 2 === 0 ? .02 + seed * .1 : .88 + seed * .1
+      const y = 0.08 + (((index * 71) % 83) / 100) * .84
+      return { label, x, y, depth: layer, phase: seed * Math.PI * 2, drift: .00008 + seed * .00009 }
+    })
+    let frame = 0
+    let animationId = 0
+    let width = 0
+    let height = 0
+    let dpr = 1
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect()
+      dpr = Math.min(window.devicePixelRatio || 1, 2)
+      width = rect.width
+      height = rect.height
+      canvas.width = Math.floor(width * dpr)
+      canvas.height = Math.floor(height * dpr)
+      context.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+    const draw = () => {
+      context.clearRect(0, 0, width, height)
+      const now = reducedMotion ? 0 : frame
+      points.forEach((point, index) => {
+        if (width < 600 && index % 4 !== 0) return
+        if (width >= 600 && width < 980 && index % 2 !== 0) return
+        const scale = point.depth === 0 ? .52 : point.depth === 1 ? .8 : 1.08
+        const driftX = Math.sin(now * point.drift + point.phase) * (point.depth + 1) * 5 + pointer.x * (point.depth + 1) * 4
+        const driftY = Math.cos(now * point.drift * .8 + point.phase) * (point.depth + 1) * 4 + pointer.y * (point.depth + 1) * 3
+        const x = point.x * width + driftX
+        const y = point.y * height + driftY
+        const fontSize = (point.depth === 2 ? 9.5 : point.depth === 1 ? 8 : 7) * scale
+        const alpha = point.depth === 0 ? .14 : point.depth === 1 ? .3 : .62
+        const color = ['#38bdf8', '#6366f1', '#a855f7', '#ec4899'][index % 4]
+        context.save()
+        context.globalAlpha = alpha
+        context.font = `700 ${fontSize}px Geist Mono, monospace`
+        const paddingX = 6 * scale
+        const boxWidth = context.measureText(point.label).width + paddingX * 2
+        const boxHeight = 15 * scale
+        context.shadowBlur = point.depth === 2 ? 12 : 5
+        context.shadowColor = color
+        context.fillStyle = 'rgba(5, 12, 35, .7)'
+        context.strokeStyle = color
+        context.lineWidth = .65
+        context.beginPath()
+        context.roundRect(x - boxWidth / 2, y - boxHeight / 2, boxWidth, boxHeight, 3 * scale)
+        context.fill()
+        context.stroke()
+        context.shadowBlur = 0
+        context.fillStyle = '#dbeafe'
+        context.textAlign = 'center'
+        context.textBaseline = 'middle'
+        context.fillText(point.label, x, y + .5)
+        context.restore()
+      })
+      frame += 1
+      animationId = reducedMotion ? 0 : requestAnimationFrame(draw)
+    }
+    const onPointerMove = (event: PointerEvent) => {
+      pointer.x = (event.clientX / window.innerWidth - .5) * .6
+      pointer.y = (event.clientY / window.innerHeight - .5) * .6
+    }
+    resize()
+    draw()
+    window.addEventListener('resize', resize)
+    window.addEventListener('pointermove', onPointerMove, { passive: true })
+    return () => { cancelAnimationFrame(animationId); window.removeEventListener('resize', resize); window.removeEventListener('pointermove', onPointerMove) }
+  }, [])
+
+  return <canvas ref={canvasRef} className="market-instrument-layer" aria-hidden="true" />
+}
+
 function DashboardPreview() {
   return <div className="dashboard-preview"><div className="dash-bar"><span className="fw-dot">FW</span><span>TRADER CONSOLE</span><b>SIMULATED ACCOUNT</b></div><div className="dash-body"><aside><small>ACCOUNT</small><strong>$100K</strong><span className="side-active">Overview</span><span>Positions</span><span>Analytics</span><span>Rules</span></aside><div className="dash-main"><div className="dash-heading"><div><small>MONDAY, 21 AUGUST 2026</small><h3>Good morning, trader.</h3></div><div className="status-pill"><i />Account active</div></div><div className="dash-stats"><div><small>BALANCE</small><strong>$106,842.00</strong><b>+6.84%</b></div><div><small>EQUITY</small><strong>$106,517.40</strong><b>+6.52%</b></div><div><small>DRAWDOWN</small><strong>1.24%</strong><span>of 5.00%</span></div><div><small>RISK SCORE</small><strong>LOW</strong><span>Healthy</span></div></div><div className="dash-chart"><div className="dash-chart-head"><span>BALANCE VS TARGET</span><small>01 AUG — 21 AUG</small></div><svg viewBox="0 0 700 170" preserveAspectRatio="none" aria-hidden="true"><path className="target-line" d="M0 145 L700 25" /><path className="dash-area" d="M0 150 C80 138 100 130 160 135 S240 95 300 106 S370 78 440 75 S540 42 700 32 V170 H0Z" /><path className="dash-line" d="M0 150 C80 138 100 130 160 135 S240 95 300 106 S370 78 440 75 S540 42 700 32" /></svg></div></div></div></div>
 }
@@ -88,6 +185,7 @@ export default function Page() {
         <div className="hero-art" aria-hidden="true">
           <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BcbzDf3Lrqy1m4pKNZ26IjBS8SMEFI.png" alt="" />
         </div>
+        <MarketInstrumentParticles />
         <div className="hero-copy"><h1>Trade Bigger. <span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="watch-demo" href="#how-it-works"><span className="play-icon" aria-hidden="true" />WATCH DEMO</a><a className="trading-rules-button" href="#rules"><FileText data-icon="inline-start" />TRADING RULES <ArrowRight data-icon="inline-end" /></a><a className="free-trial-button" href="#challenges"><UsersRound data-icon="inline-start" />FREE TRIAL ACCOUNT <ArrowRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div>
       </section>
 
