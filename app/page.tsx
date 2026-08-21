@@ -56,14 +56,9 @@ function OrbitalScene() {
   return (
     <div className="orbital-scene" aria-label="FundedWealth Forex orbital market visualization">
       <div className="orbital-atmosphere" />
-      <div className="orbital-sphere"><div className="sphere-grid" /><div className="sphere-chart" /></div>
-      <div className="orbital-ring ring-a"><i /><i /></div>
-      <div className="orbital-ring ring-b"><i /><i /></div>
-      <div className="orbital-ring ring-c"><i /><i /></div>
-      <span className="orbital-data data-a">EUR/USD <b>+0.42%</b></span>
-      <span className="orbital-data data-b">RISK / LOW</span>
-      <span className="orbital-data data-c">1.0842</span>
-      <span className="orbital-data data-d">+2.48%</span>
+      <div className="orbital-sphere" />
+      <div className="orbital-ring ring-a" />
+      <div className="orbital-ring ring-b" />
     </div>
   )
 }
