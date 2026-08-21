@@ -56,8 +56,8 @@ button { color: inherit; font: inherit; }
 .button:hover { transform: translateY(-2px); background: #7c7ff5; }
 .button svg, .text-link svg, .footer-mail svg { width: 15px; height: 15px; }
   .button-small { padding: 10px 13px; font-size: 13px; }
-  .nav-login { display: inline-flex; align-items: center; justify-content: center; padding: 11px 17px; border: 1px solid rgba(255,255,255,.16); border-radius: 7px; background: rgba(255,255,255,.08); color: #ffffff; font: 700 13px Arial,sans-serif; letter-spacing: .04em; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 8px 24px rgba(0,0,0,.18); transition: background .2s, border-color .2s, transform .2s; }
-  .nav-login:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.28); transform: translateY(-1px); }
+  .nav-login { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border: 1px solid rgba(139,124,255,.62); border-radius: 999px; background: linear-gradient(110deg, rgba(52,34,128,.86), rgba(17,30,78,.9)); color: #ffffff; font: 800 13px Arial,sans-serif; letter-spacing: .06em; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 10px 28px rgba(56,48,150,.28), 0 0 22px rgba(99,102,241,.18); transition: background .2s, border-color .2s, box-shadow .2s, transform .2s; }
+  .nav-login:hover { background: linear-gradient(110deg, rgba(72,46,158,.94), rgba(23,42,99,.94)); border-color: rgba(192,132,252,.88); box-shadow: inset 0 1px 0 rgba(255,255,255,.26), 0 14px 32px rgba(56,48,150,.4), 0 0 28px rgba(139,124,255,.3); transform: translateY(-2px); }
 .button-outline { background: transparent; border: 1px solid rgba(99,102,241,.65); box-shadow: none; }
 .text-link { display: inline-flex; align-items: center; gap: 9px; font: 800 13px Arial; letter-spacing: .1em; color: #b6c0d8; }
   .text-link:hover { color: #38bdf8; }
