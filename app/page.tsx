@@ -53,7 +53,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function OrbitalVisual() {
-  return <div className="orbital-scene" aria-label="Animated FundedWealth market visualization" role="img"><div className="orbital-aura" /><div className="orbital-core"><div className="core-grid" /><span className="core-glint" /></div><div className="hero-orbit hero-orbit-one"><i /></div><div className="hero-orbit hero-orbit-two"><i /></div><div className="hero-orbit hero-orbit-three"><i /></div><div className="hero-chart"><span /><span /><span /><span /><span /><span /></div><div className="orbital-tag orbital-tag-one">EUR/USD <b>+0.42%</b></div><div className="orbital-tag orbital-tag-two">RISK / LOW</div><div className="orbital-tag orbital-tag-three">1.0842</div></div>
+  return <div className="orbital-scene" aria-label="Animated FundedWealth market visualization" role="img"><div className="hero-orbit hero-orbit-one"><i /></div><div className="hero-orbit hero-orbit-two"><i /></div><div className="hero-orbit hero-orbit-three"><i /></div><div className="hero-chart"><span /><span /><span /><span /><span /><span /></div><div className="orbital-tag orbital-tag-one">EUR/USD <b>+0.42%</b></div><div className="orbital-tag orbital-tag-two">RISK / LOW</div><div className="orbital-tag orbital-tag-three">1.0842</div></div>
 }
 
 function DashboardPreview() {
