@@ -52,17 +52,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span />{children}</p>
 }
 
-function FundedWealthLogo() {
-  return (
-    <span className="fw-logo" aria-label="FundedWealth Forex">
-      <span className="fw-logo-orbit fw-logo-orbit-a" />
-      <span className="fw-logo-orbit fw-logo-orbit-b" />
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-t8ztiaCfUbMhKb4RXXdWtcyOG0K2v1.png" alt="FundedWealth Forex" />
-      <span className="fw-logo-reflection" />
-    </span>
-  )
-}
-
 function TerminalScene() {
   return (
     <div className="terminal-scene" aria-label="Simulated trading terminal visualization">
@@ -115,7 +104,7 @@ export default function Page() {
   return (
     <main className="site-shell">
       <nav className={`site-nav ${scrolled ? 'nav-scrolled' : ''}`}>
-        <a href="#top" className="brand"><FundedWealthLogo /></a>
+        <a href="#top" className="brand">FUNDEDWEALTH <span>FOREX</span></a>
         <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`}>
           <a href="#challenges" onClick={() => setMenuOpen(false)}>01 / CHALLENGES</a><a href="#how-it-works" onClick={() => setMenuOpen(false)}>02 / HOW IT WORKS</a><a href="#rules" onClick={() => setMenuOpen(false)}>03 / RULES</a><a href="#platforms" onClick={() => setMenuOpen(false)}>04 / PLATFORMS</a><a href="#faq" onClick={() => setMenuOpen(false)}>05 / FAQ</a>
         </div>
@@ -152,7 +141,7 @@ export default function Page() {
 
       <section className="final-cta"><div className="cta-grid" /><div className="cta-copy"><SectionLabel>YOUR NEXT MOVE</SectionLabel><h2>Your edge<br />deserves <em>more capital.</em></h2><p>Choose your challenge and start proving your trading edge.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#rules">VIEW RULES <ArrowRight data-icon="inline-end" /></a></div></div><div className="cta-orbit" /></section>
 
-      <footer id="footer" className="site-footer"><div className="footer-top"><a href="#top" className="brand"><FundedWealthLogo /></a><p>Professional simulated trading<br />built around your edge.</p><a className="footer-mail" href="mailto:hello@fundedwealthforex.com">hello@fundedwealthforex.com <ArrowRight /></a></div><div className="footer-links"><div><small>EXPLORE</small><a href="#challenges">Challenges</a><a href="#how-it-works">How it works</a><a href="#rules">Rules</a></div><div><small>PLATFORM</small><a href="#platforms">Platforms</a><a href="#community">Community</a><a href="#faq">FAQ</a></div><div><small>LEGAL</small><a href="#footer">Terms</a><a href="#footer">Privacy</a><a href="#footer">Refund policy</a><a href="#footer">Risk disclosure</a></div></div><div className="footer-bottom"><span>© 2026 FUNDEDWEALTH FOREX. ALL RIGHTS RESERVED.</span><span>SIMULATED PERFORMANCE DISCLOSURE: ALL ACCOUNTS AND RESULTS SHOWN ARE SIMULATED OR HYPOTHETICAL.</span></div></footer>
+      <footer id="footer" className="site-footer"><div className="footer-top"><a href="#top" className="brand">FUNDEDWEALTH <span>FOREX</span></a><p>Professional simulated trading<br />built around your edge.</p><a className="footer-mail" href="mailto:hello@fundedwealthforex.com">hello@fundedwealthforex.com <ArrowRight /></a></div><div className="footer-links"><div><small>EXPLORE</small><a href="#challenges">Challenges</a><a href="#how-it-works">How it works</a><a href="#rules">Rules</a></div><div><small>PLATFORM</small><a href="#platforms">Platforms</a><a href="#community">Community</a><a href="#faq">FAQ</a></div><div><small>LEGAL</small><a href="#footer">Terms</a><a href="#footer">Privacy</a><a href="#footer">Refund policy</a><a href="#footer">Risk disclosure</a></div></div><div className="footer-bottom"><span>© 2026 FUNDEDWEALTH FOREX. ALL RIGHTS RESERVED.</span><span>SIMULATED PERFORMANCE DISCLOSURE: ALL ACCOUNTS AND RESULTS SHOWN ARE SIMULATED OR HYPOTHETICAL.</span></div></footer>
     </main>
   )
 }
