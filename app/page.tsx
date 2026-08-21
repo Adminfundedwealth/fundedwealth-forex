@@ -60,17 +60,6 @@ function VideoBackdrop() {
   )
 }
 
-function OrbitalScene() {
-  return (
-    <div className="orbital-scene" aria-label="FundedWealth Forex orbital market visualization">
-      <div className="orbital-atmosphere" />
-      <div className="orbital-sphere" />
-      <div className="orbital-ring ring-a" />
-      <div className="orbital-ring ring-b" />
-    </div>
-  )
-}
-
 function DashboardPreview() {
   return <div className="dashboard-preview"><div className="dash-bar"><span className="fw-dot">FW</span><span>TRADER CONSOLE</span><b>SIMULATED ACCOUNT</b></div><div className="dash-body"><aside><small>ACCOUNT</small><strong>$100K</strong><span className="side-active">Overview</span><span>Positions</span><span>Analytics</span><span>Rules</span></aside><div className="dash-main"><div className="dash-heading"><div><small>MONDAY, 21 AUGUST 2026</small><h3>Good morning, trader.</h3></div><div className="status-pill"><i />Account active</div></div><div className="dash-stats"><div><small>BALANCE</small><strong>$106,842.00</strong><b>+6.84%</b></div><div><small>EQUITY</small><strong>$106,517.40</strong><b>+6.52%</b></div><div><small>DRAWDOWN</small><strong>1.24%</strong><span>of 5.00%</span></div><div><small>RISK SCORE</small><strong>LOW</strong><span>Healthy</span></div></div><div className="dash-chart"><div className="dash-chart-head"><span>BALANCE VS TARGET</span><small>01 AUG — 21 AUG</small></div><svg viewBox="0 0 700 170" preserveAspectRatio="none" aria-hidden="true"><path className="target-line" d="M0 145 L700 25" /><path className="dash-area" d="M0 150 C80 138 100 130 160 135 S240 95 300 106 S370 78 440 75 S540 42 700 32 V170 H0Z" /><path className="dash-line" d="M0 150 C80 138 100 130 160 135 S240 95 300 106 S370 78 440 75 S540 42 700 32" /></svg></div></div></div></div>
 }
@@ -103,7 +92,7 @@ export default function Page() {
 
       <section id="top" className="hero-section">
         <VideoBackdrop />
-        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><OrbitalScene />
+        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div>
       </section>
 
       <section className="trust-strip"><span>BUILT FOR DISCIPLINED TRADERS</span>{[['shield','SIMULATED CAPITAL'],['target','TRANSPARENT RULES'],['chart','PROFESSIONAL PLATFORM'],['gauge','CLEAR RISK PARAMETERS'],['head','TRADER SUPPORT']].map(([icon, label]) => <div key={label}><span className={`trust-icon ${icon}`} />{label}</div>)}</section>

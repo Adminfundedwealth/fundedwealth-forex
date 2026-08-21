@@ -130,16 +130,3 @@ h1 span, h2 em { color: #6366f1; font-style: normal; }
 @media (prefers-reduced-motion: reduce) { *, *:before, *:after { animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.01ms!important; } }
 @layer base { * { border-color: var(--border); outline-color: var(--ring); } }
 
-/* Simple circular hero environment */
-.orbital-scene { position: absolute; z-index: 1; right: -4%; top: 10%; width: 61%; height: 650px; overflow: hidden; pointer-events: none; }
-.orbital-atmosphere { position: absolute; width: 70%; aspect-ratio: 1; left: 16%; top: 10%; border-radius: 50%; background: radial-gradient(circle, rgba(56,189,248,.13), rgba(99,102,241,.08) 42%, transparent 70%); filter: blur(28px); animation: orbital-breathe 12s ease-in-out infinite; }
-.orbital-sphere { position: absolute; width: 62%; aspect-ratio: 1; left: 20%; top: 13%; border: 1px solid rgba(110,173,255,.27); border-radius: 50%; background: radial-gradient(circle at 31% 26%, rgba(56,189,248,.13), transparent 25%), radial-gradient(circle at 70% 72%, rgba(168,85,247,.12), transparent 39%), rgba(8,14,35,.48); box-shadow: inset -38px -28px 85px rgba(2,4,16,.62), inset 18px 10px 48px rgba(56,189,248,.08), 0 0 80px rgba(56,189,248,.1); animation: sphere-float 14s ease-in-out infinite; }
-.orbital-sphere:before { content:''; position:absolute; inset: 8%; border-radius:50%; border: 1px solid rgba(56,189,248,.08); box-shadow: inset 20px 0 35px rgba(99,102,241,.06); }
-.orbital-ring { position: absolute; left: 5%; top: 25%; width: 91%; height: 39%; border: 1px solid rgba(56,189,248,.22); border-radius: 50%; transform: rotateX(67deg) rotateZ(-16deg); animation: ring-spin 32s linear infinite; }
-.ring-b { left: 10%; top: 30%; width: 82%; height: 33%; border-color: rgba(217,70,239,.18); transform: rotateX(69deg) rotateZ(32deg); animation-duration: 44s; animation-direction: reverse; }
-@keyframes ring-spin { from { transform: rotateX(67deg) rotateZ(-16deg) rotate(0deg); } to { transform: rotateX(67deg) rotateZ(-16deg) rotate(360deg); } }
-@keyframes sphere-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-@keyframes orbital-breathe { 0%,100% { opacity:.62; transform:scale(.98); } 50% { opacity:.9; transform:scale(1.03); } }
-@media (max-width:1050px) { .orbital-scene { right:-18%; width:68%; opacity:.78; } }
-@media (max-width:760px) { .hero-section { min-height:920px; } .orbital-scene { top:455px; right:-30%; width:135%; height:430px; opacity:.7; } .orbital-sphere { top:10%; width:57%; left:21%; } }
-@media (prefers-reduced-motion:reduce) { .orbital-atmosphere,.orbital-sphere,.orbital-ring { animation:none; } }
