@@ -40,9 +40,9 @@ button { color: inherit; font: inherit; }
 .site-nav { position: fixed; z-index: 20; top: 18px; left: 3.5%; right: 3.5%; display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 12px 18px; border: 1px solid transparent; border-radius: 10px; transition: .3s; }
 .nav-scrolled { background: rgba(8,13,30,.82); border-color: rgba(148,163,184,.16); backdrop-filter: blur(18px); }
 .brand { display: flex; align-items: center; gap: 10px; font: 700 12px/1 Arial,sans-serif; letter-spacing: .1em; }
-.brand-with-mark img { width: 46px; height: 46px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(56,189,248,.5)); }
-.brand-with-mark span { display: inline-flex; flex-direction: column; gap: 5px; color: #f7f9ff; font-size: 13px; font-weight: 800; letter-spacing: .16em; line-height: 1; }
-.brand-with-mark i { color: #39c6ff; font-style: normal; font-size: 9px; font-weight: 800; letter-spacing: .48em; line-height: 1; }
+.brand-with-mark img { width: 64px; height: 64px; object-fit: contain; filter: drop-shadow(0 0 18px rgba(56,189,248,.68)); }
+.brand-with-mark span { display: inline-flex; flex-direction: column; gap: 6px; color: #ffffff; font-size: 16px; font-weight: 900; letter-spacing: .18em; line-height: 1; text-shadow: 0 0 14px rgba(255,255,255,.18); }
+.brand-with-mark i { background: linear-gradient(90deg, #ff7442 0%, #ff4fd8 34%, #8b7cff 66%, #25d9ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal; font-size: 12px; font-weight: 900; letter-spacing: .62em; line-height: 1; text-shadow: none; }
 .brand small { display: block; color: #8290ae; font-size: 8px; letter-spacing: .28em; margin-top: 4px; }
 .brand-mark, .fw-dot { display: grid; place-items: center; color: #fff; background: linear-gradient(135deg,#6366f1,#a855f7); border-radius: 5px; box-shadow: 0 0 22px rgba(99,102,241,.32); }
 .brand-mark { width: 31px; height: 31px; font: 800 11px Arial; letter-spacing: -.12em; }
