@@ -52,32 +52,18 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span />{children}</p>
 }
 
-function TerminalScene() {
+function OrbitalScene() {
   return (
-    <div className="terminal-scene" aria-label="Simulated trading terminal visualization">
-      <div className="scene-glow scene-glow-blue" />
-      <div className="scene-glow scene-glow-orange" />
-      <div className="orbit orbit-one" />
-      <div className="orbit orbit-two" />
-      <div className="market-particle particle-one">+2.48%</div>
-      <div className="market-particle particle-two">EUR/USD</div>
-      <div className="market-particle particle-three">1.0842</div>
-      <div className="terminal-window">
-        <div className="terminal-topbar"><span className="fw-dot">FW</span><span>FUNDEDWEALTH / LIVE SIMULATION</span><span className="live-dot">● LIVE</span></div>
-        <div className="terminal-body">
-          <div className="terminal-sidebar"><span className="active-line" /><span /><span /><span /><span /></div>
-          <div className="terminal-content">
-            <div className="market-head"><div><small>MARKET OVERVIEW</small><strong>EUR/USD</strong></div><div className="quote"><span>1.0842</span><b>+0.42%</b></div></div>
-            <div className="chart-wrap">
-              <div className="chart-grid"><i /><i /><i /><i /><i /></div>
-              <svg viewBox="0 0 520 180" preserveAspectRatio="none" className="chart-svg" aria-hidden="true"><path className="chart-fill" d="M0 150 C40 145 55 120 90 132 S130 80 165 104 S215 72 245 93 S290 45 325 66 S360 90 395 60 S450 30 520 18 V180 H0Z" /><path className="chart-line" d="M0 150 C40 145 55 120 90 132 S130 80 165 104 S215 72 245 93 S290 45 325 66 S360 90 395 60 S450 30 520 18" /></svg>
-              <div className="price-tag">1.0842</div>
-            </div>
-            <div className="terminal-metrics"><div><small>EQUITY</small><strong>$106,842.00</strong><b>+6.84%</b></div><div><small>PROFIT</small><strong>+$6,842.00</strong><b>+2.16%</b></div><div><small>DRAWDOWN</small><strong>1.24%</strong><em>SAFE</em></div></div>
-          </div>
-        </div>
-        <div className="terminal-footer"><span>GBP/USD <b>1.2638</b></span><span>XAU/USD <b>2,318.40</b></span><span>RISK SCORE <b className="cyan">LOW</b></span></div>
-      </div>
+    <div className="orbital-scene" aria-label="FundedWealth Forex orbital market visualization">
+      <div className="orbital-atmosphere" />
+      <div className="orbital-sphere"><div className="sphere-grid" /><div className="sphere-chart" /></div>
+      <div className="orbital-ring ring-a"><i /><i /></div>
+      <div className="orbital-ring ring-b"><i /><i /></div>
+      <div className="orbital-ring ring-c"><i /><i /></div>
+      <span className="orbital-data data-a">EUR/USD <b>+0.42%</b></span>
+      <span className="orbital-data data-b">RISK / LOW</span>
+      <span className="orbital-data data-c">1.0842</span>
+      <span className="orbital-data data-d">+2.48%</span>
     </div>
   )
 }
@@ -113,7 +99,7 @@ export default function Page() {
       </nav>
 
       <section id="top" className="hero-section">
-        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><TerminalScene />
+        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><OrbitalScene />
       </section>
 
       <section className="trust-strip"><span>BUILT FOR DISCIPLINED TRADERS</span>{[['shield','SIMULATED CAPITAL'],['target','TRANSPARENT RULES'],['chart','PROFESSIONAL PLATFORM'],['gauge','CLEAR RISK PARAMETERS'],['head','TRADER SUPPORT']].map(([icon, label]) => <div key={label}><span className={`trust-icon ${icon}`} />{label}</div>)}</section>
