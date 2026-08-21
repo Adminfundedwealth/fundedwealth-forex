@@ -61,18 +61,7 @@ button { color: inherit; font: inherit; }
 .text-link:hover { color: #38bdf8; }
 .menu-toggle { display: none; border: 0; background: transparent; }
 .hero-section { position: relative; min-height: 850px; display: flex; align-items: center; padding: 145px 7.5% 100px; background: radial-gradient(circle at 74% 46%, rgba(55,76,175,.18), transparent 27%), radial-gradient(circle at 95% 88%, rgba(249,115,22,.1), transparent 18%), #03050c; }
-.reference-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .12; filter: saturate(.9) contrast(1.12); mix-blend-mode: screen; mask-image: linear-gradient(90deg, transparent 0%, black 30%, black 76%, transparent 100%); }
 .hero-section:after { content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background: linear-gradient(90deg, #03050c 0%, rgba(3,5,12,.82) 34%, rgba(3,5,12,.48) 70%, rgba(3,5,12,.86) 100%); }
-.video-showcase { position: relative; display: grid; grid-template-columns: .7fr 1.3fr; align-items: center; gap: 8%; padding: 110px 7.5%; overflow: hidden; background: #050816; border-bottom: 1px solid rgba(148,163,184,.13); }
-.video-showcase-copy { position: relative; z-index: 1; max-width: 410px; }
-.video-showcase-copy h2 { margin-top: 18px; font-size: clamp(38px, 4vw, 62px); line-height: .98; letter-spacing: -.065em; }
-.video-showcase-copy p { margin: 22px 0 28px; color: #9ba8c1; font-size: 16px; line-height: 1.7; }
-.video-frame { position: relative; min-height: 360px; overflow: hidden; border: 1px solid rgba(99,102,241,.45); border-radius: 12px; background: #080d1e; box-shadow: 0 25px 80px rgba(0,0,0,.4), 0 0 45px rgba(99,102,241,.12); }
-.video-frame video { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; opacity: .82; filter: saturate(.88) contrast(1.08); }
-.video-frame:after { content:''; position:absolute; inset:0; pointer-events:none; background: linear-gradient(180deg, rgba(3,5,12,.05), rgba(3,5,12,.56)); }
-.video-frame-label { position:absolute; z-index:1; top:16px; left:18px; right:18px; display:flex; justify-content:space-between; color:#dbe5ff; font:700 11px 'Geist Mono',monospace; letter-spacing:.12em; }
-.video-frame-label b { color:#7de0ba; font-weight:700; }
-.video-frame-label i { display:inline-block; width:6px; height:6px; margin-right:7px; border-radius:50%; background:#7de0ba; box-shadow:0 0 10px #7de0ba; }
 .hero-copy, .orbital-scene { z-index: 2; }
 .orbital-scene { position: absolute; right: 2%; top: 10%; width: 56%; height: 690px; pointer-events: none; overflow: hidden; filter: drop-shadow(0 0 40px rgba(56,189,248,.08)); }
 .orbital-aura { position: absolute; width: 62%; aspect-ratio: 1; top: 10%; left: 18%; border-radius: 50%; background: radial-gradient(circle, rgba(57,76,177,.24), rgba(115,54,188,.12) 48%, transparent 72%); filter: blur(22px); animation: aura-breathe 8s ease-in-out infinite; }

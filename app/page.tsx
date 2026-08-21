@@ -52,14 +52,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span />{children}</p>
 }
 
-function VideoBackdrop() {
-  return (
-    <video className="reference-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-      <source src="/fundedwealth-reference.mp4" type="video/mp4" />
-    </video>
-  )
-}
-
 function OrbitalVisual() {
   return <div className="orbital-scene" aria-label="Animated FundedWealth market visualization" role="img"><div className="orbital-aura" /><div className="orbital-core"><div className="core-grid" /><span className="core-glint" /></div><div className="hero-orbit hero-orbit-one"><i /></div><div className="hero-orbit hero-orbit-two"><i /></div><div className="hero-orbit hero-orbit-three"><i /></div><div className="hero-chart"><span /><span /><span /><span /><span /><span /></div><div className="orbital-tag orbital-tag-one">EUR/USD <b>+0.42%</b></div><div className="orbital-tag orbital-tag-two">RISK / LOW</div><div className="orbital-tag orbital-tag-three">1.0842</div></div>
 }
@@ -95,7 +87,6 @@ export default function Page() {
       </nav>
 
       <section id="top" className="hero-section">
-        <VideoBackdrop />
         <OrbitalVisual />
         <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div>
       </section>
