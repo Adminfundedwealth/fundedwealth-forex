@@ -52,6 +52,14 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span />{children}</p>
 }
 
+function VideoBackdrop() {
+  return (
+    <video className="reference-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+      <source src="/fundedwealth-reference.mp4" type="video/mp4" />
+    </video>
+  )
+}
+
 function OrbitalScene() {
   return (
     <div className="orbital-scene" aria-label="FundedWealth Forex orbital market visualization">
@@ -94,10 +102,13 @@ export default function Page() {
       </nav>
 
       <section id="top" className="hero-section">
+        <VideoBackdrop />
         <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><OrbitalScene />
       </section>
 
       <section className="trust-strip"><span>BUILT FOR DISCIPLINED TRADERS</span>{[['shield','SIMULATED CAPITAL'],['target','TRANSPARENT RULES'],['chart','PROFESSIONAL PLATFORM'],['gauge','CLEAR RISK PARAMETERS'],['head','TRADER SUPPORT']].map(([icon, label]) => <div key={label}><span className={`trust-icon ${icon}`} />{label}</div>)}</section>
+
+      <section className="video-showcase"><div className="video-showcase-copy"><SectionLabel>FUND WEALTH IN MOTION</SectionLabel><h2>Built for the<br /><em>next position.</em></h2><p>Experience the FundedWealth atmosphere through a focused visual layer that keeps the brand in view while traders stay locked on process.</p><a className="text-link" href="#challenges">EXPLORE CHALLENGES <ArrowRight data-icon="inline-end" /></a></div><div className="video-frame"><video autoPlay muted loop playsInline preload="metadata" aria-label="FundedWealth Forex market motion"><source src="/fundedwealth-reference.mp4" type="video/mp4" /></video><div className="video-frame-label"><span>FW / VISUAL FEED</span><b><i />LIVE SIMULATION</b></div></div></section>
 
       <section id="challenges" className="section challenges-section"><div className="section-heading"><div><SectionLabel>THE RIGHT FIT FOR YOUR EDGE</SectionLabel><h2>Choose Your <em>Challenge.</em></h2></div><p>Select the account size and evaluation model that fits your trading style.</p></div><div className="challenge-layout"><div className="challenge-tabs">{challenges.map((challenge, index) => <button className={activeChallenge === index ? 'selected' : ''} onClick={() => setActiveChallenge(index)} key={challenge.size}><span>ACCOUNT SIZE</span><strong>{challenge.size}</strong><small>{challenge.price} <i>ONE-TIME</i></small>{activeChallenge === index && <Check />}</button>)}</div><div className="challenge-detail"><div className="detail-top"><div><small>SELECTED ACCOUNT</small><h3>{selected.size} <span>CHALLENGE</span></h3></div><div className="price"><small>ONE-TIME FEE</small><strong>{selected.price}</strong></div></div><div className="detail-metrics">{[['PROFIT TARGET', selected.target],['DAILY DRAWDOWN', selected.daily],['MAX DRAWDOWN', selected.max],['MINIMUM DAYS', selected.days],['PROFIT SHARE', selected.share],['LEVERAGE', selected.leverage]].map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div><div className="detail-bottom"><span><ShieldCheck /> Transparent parameters. No hidden rules.</span><a className="button" href="#footer">START CHALLENGE <ArrowRight data-icon="inline-end" /></a></div></div></div></section>
 
