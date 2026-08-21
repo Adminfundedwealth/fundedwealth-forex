@@ -108,6 +108,16 @@ export default function Page() {
             <i className="dust-speck dust-speck-10" />
             <i className="dust-speck dust-speck-11" />
             <i className="dust-speck dust-speck-12" />
+            <i className="planet-speck planet-speck-1" />
+            <i className="planet-speck planet-speck-2" />
+            <i className="planet-speck planet-speck-3" />
+            <i className="planet-speck planet-speck-4" />
+            <i className="planet-speck planet-speck-5" />
+            <i className="planet-speck planet-speck-6" />
+            <i className="planet-speck planet-speck-7" />
+            <i className="planet-speck planet-speck-8" />
+            <i className="planet-speck planet-speck-9" />
+            <i className="planet-speck planet-speck-10" />
           </div>
         </div>
         <div className="hero-copy"><h1>Trade Bigger. <span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="watch-demo" href="#how-it-works"><span className="play-icon" aria-hidden="true" />WATCH DEMO</a><a className="trading-rules-button" href="#rules"><FileText data-icon="inline-start" />TRADING RULES <ArrowRight data-icon="inline-end" /></a><a className="free-trial-button" href="#challenges"><UsersRound data-icon="inline-start" />FREE TRIAL ACCOUNT <ArrowRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div>
