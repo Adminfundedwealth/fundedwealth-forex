@@ -106,7 +106,7 @@ export default function Page() {
       <nav className={`site-nav ${scrolled ? 'nav-scrolled' : ''}`}>
 <a href="#top" className="brand brand-with-mark"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex mark" /><span>FUNDEDWEALTH <i>FOREX</i></span></a>
         <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`}>
-          <a href="#challenges" onClick={() => setMenuOpen(false)}>01 / CHALLENGES</a><a href="#how-it-works" onClick={() => setMenuOpen(false)}>02 / HOW IT WORKS</a><a href="#rules" onClick={() => setMenuOpen(false)}>03 / RULES</a><a href="#platforms" onClick={() => setMenuOpen(false)}>04 / PLATFORMS</a><a href="#faq" onClick={() => setMenuOpen(false)}>05 / FAQ</a>
+          <a href="#challenges" onClick={() => setMenuOpen(false)}>CHALLENGES</a><a href="#how-it-works" onClick={() => setMenuOpen(false)}>HOW IT WORKS</a><a href="#rules" onClick={() => setMenuOpen(false)}>RULES</a><a href="#platforms" onClick={() => setMenuOpen(false)}>PLATFORMS</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
         </div>
         <div className="nav-actions"><a className="nav-community" href="#community">COMMUNITY</a><a className="portal-link" href="#dashboard">TRADER PORTAL</a><a className="button button-small" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a></div>
         <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
