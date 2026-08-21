@@ -113,7 +113,7 @@ export default function Page() {
       </nav>
 
       <section id="top" className="hero-section">
-        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $500K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><TerminalScene />
+        <div className="hero-copy"><h1>Trade Bigger.<br /><span>Prove Your Edge.</span><br />Build Your Capital.</h1><p className="hero-text">Prove your trading edge through a transparent evaluation and access a professional simulated trading environment built around disciplined risk management.</p><div className="hero-buttons"><a className="button" href="#challenges">START CHALLENGE <ArrowRight data-icon="inline-end" /></a><a className="text-link" href="#how-it-works">EXPLORE CHALLENGES <ArrowDownRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div><TerminalScene />
         <div className="scroll-cue"><span />SCROLL TO EXPLORE</div>
       </section>
 
