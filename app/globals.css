@@ -222,19 +222,7 @@ button { color: inherit; font: inherit; }
 /* Final visible planet atmosphere: deliberately sparse, edge-only, and clearly rendered above the artwork. */
 .planet-atmosphere { z-index: 5; }
 .planet-atmosphere .dust-speck,
-.planet-atmosphere .planet-speck { display: none; }
-.planet-atmosphere .dust-speck-1,
-.planet-atmosphere .dust-speck-2,
-.planet-atmosphere .dust-speck-4,
-.planet-atmosphere .dust-speck-6,
-.planet-atmosphere .dust-speck-8,
-.planet-atmosphere .dust-speck-9,
-.planet-atmosphere .dust-speck-11,
-.planet-atmosphere .planet-speck-2,
-.planet-atmosphere .planet-speck-3,
-.planet-atmosphere .planet-speck-4,
-.planet-atmosphere .planet-speck-6,
-.planet-atmosphere .planet-speck-8 { display: block; width: 3px; height: 3px; opacity: .78; border-radius: 50%; animation: visible-space-drift 7s ease-in-out infinite; }
+.planet-atmosphere .planet-speck { display: block; width: 1px; height: 1px; opacity: .48; border-radius: 50%; animation: visible-space-drift 6s ease-in-out infinite; }
 .planet-atmosphere .dust-speck-1 { left: 14%; top: 38%; }
 .planet-atmosphere .dust-speck-2 { left: 25%; top: 15%; }
 .planet-atmosphere .dust-speck-4 { left: 72%; top: 13%; }
@@ -247,7 +235,7 @@ button { color: inherit; font: inherit; }
 .planet-atmosphere .planet-speck-4 { left: 89%; top: 52%; }
 .planet-atmosphere .planet-speck-6 { left: 24%; top: 61%; }
 .planet-atmosphere .planet-speck-8 { left: 63%; top: 93%; }
-.planet-atmosphere .edge-light { z-index: 2; width: 8px; height: 8px; opacity: .95; animation: visible-edge-pulse 3.8s ease-in-out infinite; }
+.planet-atmosphere .edge-light { z-index: 2; width: 2px; height: 2px; opacity: .7; box-shadow: 0 0 5px 1px currentColor, 0 0 14px 4px currentColor; animation: visible-edge-pulse 4.8s ease-in-out infinite; }
 .planet-atmosphere .edge-light-1 { left: 50%; top: 7%; color: #38bdf8; }
 .planet-atmosphere .edge-light-2 { left: 27%; top: 15%; color: #a78bfa; }
 .planet-atmosphere .edge-light-3 { left: 13%; top: 49%; color: #67e8f9; }
