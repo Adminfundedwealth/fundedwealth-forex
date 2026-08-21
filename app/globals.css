@@ -43,7 +43,7 @@ button { color: inherit; font: inherit; }
 .brand-with-mark { gap: 14px; }
 .brand-with-mark img { width: 82px; height: 82px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(56,189,248,.72)); }
 .brand-with-mark span { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; min-width: 205px; color: #ffffff; font-size: 20px; font-weight: 900; letter-spacing: .2em; line-height: 1; text-shadow: 0 0 14px rgba(255,255,255,.18); }
-.brand-with-mark i { background: linear-gradient(90deg, #ff7442 0%, #ff4fd8 34%, #8b7cff 66%, #25d9ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal; font-size: 15px; font-weight: 900; letter-spacing: .72em; line-height: 1; padding-left: .72em; text-shadow: none; }
+.brand-with-mark i { background: linear-gradient(90deg, #ff7442 0%, #ff4fd8 34%, #8b7cff 66%, #25d9ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal; font-size: 22px; font-weight: 900; letter-spacing: .72em; line-height: 1; padding-left: .72em; text-shadow: none; }
 .brand small { display: block; color: #8290ae; font-size: 8px; letter-spacing: .28em; margin-top: 4px; }
 .brand-mark, .fw-dot { display: grid; place-items: center; color: #fff; background: linear-gradient(135deg,#6366f1,#a855f7); border-radius: 5px; box-shadow: 0 0 22px rgba(99,102,241,.32); }
 .brand-mark { width: 31px; height: 31px; font: 800 11px Arial; letter-spacing: -.12em; }
