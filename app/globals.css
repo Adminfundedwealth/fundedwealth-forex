@@ -54,6 +54,8 @@ button { color: inherit; font: inherit; }
 .nav-actions { display: flex; align-items: center; gap: 17px; }
 .button { display: inline-flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 5px; background: #6366f1; color: #fff; font: 800 13px Arial,sans-serif; letter-spacing: .1em; box-shadow: 0 10px 32px rgba(99,102,241,.25); transition: transform .2s, background .2s; }
 .button:hover { transform: translateY(-2px); background: #7c7ff5; }
+.primary-liquid { min-width: 222px; padding: 15px 24px; border: 1px solid rgba(125, 224, 255, .68); border-radius: 999px; background: linear-gradient(110deg, rgba(72, 67, 190, .9), rgba(35, 32, 112, .94)); color: #ffffff; box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 12px 30px rgba(75, 72, 210, .32), 0 0 26px rgba(99, 102, 241, .22); }
+.primary-liquid:hover { background: linear-gradient(110deg, rgba(98, 91, 224, .96), rgba(45, 40, 142, .96)); border-color: rgba(165, 243, 255, .92); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 16px 36px rgba(75, 72, 210, .42), 0 0 32px rgba(125, 224, 255, .28); }
 .button svg, .text-link svg, .footer-mail svg { width: 15px; height: 15px; }
   .button-small { padding: 10px 13px; font-size: 13px; }
   .nav-login { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border: 1px solid rgba(139,124,255,.62); border-radius: 999px; background: linear-gradient(110deg, rgba(52,34,128,.86), rgba(17,30,78,.9)); color: #ffffff; font: 800 13px Arial,sans-serif; letter-spacing: .06em; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 10px 28px rgba(56,48,150,.28), 0 0 22px rgba(99,102,241,.18); transition: background .2s, border-color .2s, box-shadow .2s, transform .2s; }
