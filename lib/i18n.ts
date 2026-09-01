@@ -32,7 +32,8 @@ const english = {
   faq: { label: 'NO NOISE, JUST ANSWERS', title: 'Frequently asked.', intro: 'Everything you need to make a confident decision about your next challenge.' },
 } as const
 
-const overrides: Partial<Record<LanguageCode, Partial<typeof english>>> = {
+type DeepPartialString<T> = T extends string ? string : { [K in keyof T]?: DeepPartialString<T[K]> }
+const overrides: Partial<Record<LanguageCode, DeepPartialString<typeof english>>> = {
   'hi-IN': { nav: { ...english.nav, challenges: 'चुनौतियां', rules: 'नियम', start: 'चुनौती शुरू करें' }, hero: { ...english.hero, badge: 'आपका विश्वसनीय ट्रेडिंग पार्टनर', title: 'बड़ा ट्रेड करें। अपनी क्षमता साबित करें।', text: 'पारदर्शी मूल्यांकन के माध्यम से अपनी ट्रेडिंग क्षमता साबित करें।', start: 'चुनौती शुरू करें' }, checkout: { ...english.checkout, title: 'अपना अकाउंट चुनें।', lead: 'भुगतान से पहले अपनी चुनौती कॉन्फ़िगर करें।', billing: 'बिलिंग विवरण', proceed: 'भुगतान पर जाएं' } },
   'de-DE': { nav: { ...english.nav, challenges: 'HERAUSFORDERUNGEN', rules: 'REGELN', start: 'CHALLENGE STARTEN' }, hero: { ...english.hero, badge: 'IHR VERTRAUENSWÜRDIGER TRADING-PARTNER', title: 'Größer handeln. Ihre Stärke beweisen.', start: 'CHALLENGE STARTEN' }, checkout: { ...english.checkout, title: 'Wählen Sie Ihr Konto.', billing: 'Rechnungsdaten', paymentMethod: 'Zahlungsmethode wählen', proceed: 'Weiter zur Zahlung' } },
   'pt-BR': { nav: { ...english.nav, challenges: 'DESAFIOS', rules: 'REGRAS', start: 'INICIAR DESAFIO' }, hero: { ...english.hero, badge: 'SEU PARCEIRO DE TRADING', title: 'Opere maior. Prove sua vantagem.', start: 'INICIAR DESAFIO' }, checkout: { ...english.checkout, title: 'Escolha sua conta.', billing: 'Dados de cobrança', proceed: 'Prosseguir para pagamento' } },

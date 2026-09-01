@@ -139,10 +139,8 @@ export function isMarketOpen(timestamp: number = Date.now()): boolean {
   const hours = date.getUTCHours()
   
   // Simplified: assume market closed on weekends (Fri 22:00 UTC to Sun 22:00 UTC)
-  if (day === 0 || day === 6) {
-    if (day === 5 && hours < 22) return true // Friday before cutoff
-    return false
-  }
-  
+  if (day === 5 && hours >= 22) return false // Friday after cutoff
+  if (day === 0 || day === 6) return false   // Saturday / Sunday
+
   return true
 }

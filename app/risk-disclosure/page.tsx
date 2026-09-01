@@ -28,7 +28,7 @@ export default function RiskDisclosurePage() {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-      if (visible[0]) setActiveSection(visible[0].target.id)
+      if (visible[0]) setActiveSection(visible[0].target.id as typeof sections[number][0])
     }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, .1] })
     sections.forEach(([id]) => { const element = document.getElementById(id); if (element) observer.observe(element) })
     return () => observer.disconnect()
