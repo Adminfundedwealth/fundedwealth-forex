@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import MarketTicker from '@/components/MarketTicker'
 import { LanguageSwitcher, useLanguage } from '@/components/LanguageProvider'
 import { CurrencySwitcher, useCurrency } from '@/components/CurrencyProvider'
+import ColourfulText from '@/components/ui/colourful-text'
 import { getPricing, type CalculatedPricing } from '@/lib/flash-pricing'
 import {
   ArrowDownRight,
@@ -764,8 +765,19 @@ export default function Page() {
           <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BcbzDf3Lrqy1m4pKNZ26IjBS8SMEFI.png" alt="" />
           <div className="planet-atmosphere" aria-hidden="true" />
         </div>
-        <div className="hero-copy"><div className="hero-trust-badge">{t.hero.badge}</div><div className="hero-container"><h1 className="saas-heading"><span className="line line-1">Trade Bigger.</span><span className="line line-2">Prove Your Edge.</span><span className="line line-3">Build Your Capital.</span></h1></div><p className="hero-text">{t.hero.text}</p><div className="hero-buttons"><StartChallengeLink className="button primary-liquid" href={checkoutHref}>{t.hero.start} <ArrowRight data-icon="inline-end" /></StartChallengeLink><a className="watch-demo" href="#how-it-works"><span className="play-icon" aria-hidden="true" />{t.hero.demo}</a><a className="trading-rules-button" href="#rules"><FileText data-icon="inline-start" />{t.hero.rules} <ArrowRight data-icon="inline-end" /></a><a className="free-trial-button" href="#challenges"><UsersRound data-icon="inline-start" />{t.hero.trial} <ArrowRight data-icon="inline-end" /></a></div><div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div></div>
-
+        <div className="hero-copy">
+          <div className="hero-trust-badge">{t.hero.badge}</div>
+          <div className="hero-container">
+            <h1 className="saas-heading">
+              <span className="hero-line hero-line-top">Trade Bigger.</span>
+              <ColourfulText text="Prove Your Edge." className="hero-gradient-text" />
+              <span className="hero-line hero-line-bottom">Build Your Capital.</span>
+            </h1>
+          </div>
+          <p className="hero-text">{t.hero.text}</p>
+          <div className="hero-buttons"><StartChallengeLink className="button primary-liquid" href={checkoutHref}>{t.hero.start} <ArrowRight data-icon="inline-end" /></StartChallengeLink><a className="watch-demo" href="#how-it-works"><span className="play-icon" aria-hidden="true" />{t.hero.demo}</a><a className="trading-rules-button" href="#rules"><FileText data-icon="inline-start" />{t.hero.rules} <ArrowRight data-icon="inline-end" /></a><a className="free-trial-button" href="#challenges"><UsersRound data-icon="inline-start" />{t.hero.trial} <ArrowRight data-icon="inline-end" /></a></div>
+          <div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div>
+        </div>
       </section>
 
       <MarketTicker />
