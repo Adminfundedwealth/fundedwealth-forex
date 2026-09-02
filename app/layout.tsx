@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { LanguageProvider } from '@/components/LanguageProvider'
 import { CurrencyProvider } from '@/components/CurrencyProvider'
+import Navbar from '@/components/Navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className="bg-background">
       <body className="antialiased">
-        <LanguageProvider><CurrencyProvider>{children}</CurrencyProvider></LanguageProvider>
+        <LanguageProvider><CurrencyProvider><Navbar />{children}</CurrencyProvider></LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

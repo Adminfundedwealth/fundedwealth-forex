@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowRight, ChevronDown, FileWarning, Search, ShieldCheck, Sparkles, X } from 'lucide-react'
-import { LanguageSwitcher, useLanguage } from '@/components/LanguageProvider'
+import { useLanguage } from '@/components/LanguageProvider'
 
 type RuleItem = { label: string; value: string }
 type Program = { id: string; icon: string; title: string; subtitle: string; rules: RuleItem[] }
@@ -45,14 +45,6 @@ export default function RulesPage() {
 
   return (
     <main className="rules-page">
-      <header className="rules-header">
-        <a href="/" className="brand brand-with-mark"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex mark" /><span>FUNDEDWEALTH <i>FOREX</i></span></a>
-        <nav className="rules-nav" aria-label="Primary navigation">
-          <a href="/#challenges">CHALLENGES</a><a href="/#how-it-works">HOW IT WORKS</a><a className="is-active" href="/rules" aria-current="page">RULES</a><a href="/#platforms">PLATFORMS</a><a href="/#faq">FAQ</a>
-        </nav>
-        <div className="rules-header-actions"><a href="/#community">COMMUNITY</a><a href="/#dashboard">TRADER PORTAL</a><a className="rules-login" href="/#footer">LOGIN / REGISTER</a><LanguageSwitcher /></div>
-      </header>
-
       <section className="rules-hero">
         <h1>Program trading <em>rules</em></h1>
         <p className="rules-lead">Everything that governs your challenge in one place: profit targets, loss limits, session rules, instruments, sizing, and timelines.</p>

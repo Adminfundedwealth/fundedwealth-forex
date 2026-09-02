@@ -22,12 +22,10 @@ import {
   FileText,
   Layers3,
   LineChart,
-  Menu,
   ShieldCheck,
   Target,
   TrendingUp,
   UsersRound,
-  X,
   Zap,
 } from 'lucide-react'
 
@@ -313,7 +311,7 @@ function ComparisonSection() {
   return (
     <section ref={comparisonRef} className={`comparison-section${inView ? ' is-visible' : ''}`} style={{ '--comparison-x': `${pointer.x}px`, '--comparison-y': `${pointer.y}px` } as React.CSSProperties} onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); setPointer({ x: (event.clientX - rect.left - rect.width / 2) * 0.018, y: (event.clientY - rect.top - rect.height / 2) * 0.018 }) }} onPointerLeave={() => setPointer({ x: 0, y: 0 })}>
       <div className="comparison-atmosphere" aria-hidden="true"><span className="comparison-orbit comparison-orbit-one" /><span className="comparison-orbit comparison-orbit-two" /><i className="comparison-particle comparison-particle-one" /><i className="comparison-particle comparison-particle-two" /><i className="comparison-particle comparison-particle-three" /></div>
-      <div className="comparison-heading"><SectionLabel>THE FUNDEDWEALTH — FOREX DIFFERENCE</SectionLabel><h2>Built for traders.<br /><em>Designed for your edge.</em></h2><p>See what makes the FundedWealth Forex experience different.</p></div>
+      <div className="comparison-heading"><SectionLabel>THE FUNDEDWEALTH — FOREX DIFFERENCE</SectionLabel><h2>Built for traders. <em>Designed for your edge.</em></h2><p>See what makes the FundedWealth Forex experience different.</p></div>
       <div className="comparison-stage">
         <div className="comparison-column comparison-features"><div className="comparison-column-head">FEATURES</div>{comparisonRows.map(([feature]) => <div className="comparison-row comparison-feature-row" key={feature}><span>{feature}</span></div>)}</div>
         <div className="comparison-column comparison-firm"><div className="comparison-card"><span className="comparison-card-kicker">FW / TRADING ENVIRONMENT</span><img src="/fundedwealth-mark.png" alt="" /><strong>FUNDEDWEALTH <em>FOREX</em></strong><small>PROVE YOUR EDGE</small><i className="comparison-card-sweep" /></div><div className="comparison-values">{comparisonRows.map(([feature, value]) => <div className="comparison-row" key={feature}><span className="comparison-positive">&#10003;</span><span>{value}</span></div>)}</div></div>
@@ -563,8 +561,6 @@ export default function Page() {
   const [activeProgram, setActiveProgram] = useState(0)
   const [openRule, setOpenRule] = useState<number | null>(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const [journeyStep, setJourneyStep] = useState(0)
   const [journeyProgress, setJourneyProgress] = useState(0)
   const [journeySuccess, setJourneySuccess] = useState(false)
@@ -583,12 +579,6 @@ export default function Page() {
           : modelIndex === 3
             ? twoStepChallenges.length
         : challenges.length
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     const buttons = Array.from(document.querySelectorAll<HTMLAnchorElement>('a.button[href="#footer"]'))
@@ -720,19 +710,6 @@ export default function Page() {
 
   return (
     <main className="site-shell">
-      <div className="product-switcher" role="navigation" aria-label="FundedWealth products">
-        <a className="product-tab is-active" href="#top">FUNDEDWEALTH <b>FOREX</b></a>
-        <a className="product-tab product-tab-ind" href="https://www.fundedwealth.com/"><img src="/fundedwealth-mark.png" alt="FundedWealth" /><span>FUNDEDWEALTH <b>IND MARKET</b></span></a>
-      </div>
-      <nav className={`site-nav ${scrolled ? 'nav-scrolled' : ''}`}>
-<a href="#top" className="brand brand-with-mark"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex mark" /><span>FUNDEDWEALTH <i>FOREX</i></span></a>
-        <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`}>
-          <a href="#challenges" onClick={() => setMenuOpen(false)}>{t.nav.challenges}</a><a href="#how-it-works" onClick={() => setMenuOpen(false)}>{t.nav.howItWorks}</a><a href="/rules" onClick={() => setMenuOpen(false)}>{t.nav.rules}</a><a href="/affiliate" onClick={() => setMenuOpen(false)}>Affiliate</a><a href="#platforms" onClick={() => setMenuOpen(false)}>{t.nav.platforms}</a><a href="#faq" onClick={() => setMenuOpen(false)}>{t.nav.faq}</a>
-        </div>
-        <div className="nav-actions"><a className="nav-community" href="#community">{t.nav.community}</a><a className="portal-link" href="#dashboard">{t.nav.portal}</a><a className="nav-login" href="#footer">{t.nav.login}</a><LanguageSwitcher /></div>
-        <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
-      </nav>
-
       <section id="top" className="hero-section h-screen w-full flex flex-col overflow-hidden">
         <div className="hero-art" aria-hidden="true">
           <DataRain />
@@ -784,12 +761,11 @@ export default function Page() {
 
       <section className="section fw-edge-section"><div className="fw-edge-heading" /><div className="fw-edge-bento"><article className="fw-bento-card fw-bento-platform"><div className="fw-bento-copy"><small>01 / TRADING PLATFORM</small><h3>Professional Trading Platform</h3><p>Trade through a professional environment built for speed, clarity and disciplined execution.</p></div><div className="fw-terminal-visual" aria-hidden="true"><div className="fw-terminal-top"><img src="/fundedwealth-mark.png" alt="" /><span>TRADING CONSOLE</span><i /></div><div className="fw-terminal-chart"><i /><i /><i /><i /><i /><b /></div><div className="fw-terminal-footer"><span>EUR/USD</span><strong>+1.24%</strong></div></div></article><article className="fw-bento-card fw-bento-payout"><div className="fw-bento-copy"><small>02 / FAST PAYOUTS</small><h3>Fast &amp; Transparent Payouts</h3><p>Clear payout rules with transparent eligibility and no unnecessary complexity.</p></div><div className="fw-payout-visual" aria-hidden="true"><strong>90%</strong><span>ELIGIBLE SHARE</span><i /></div></article><article className="fw-bento-card fw-bento-capital"><div className="fw-bento-copy"><small>03 / SIMULATED CAPITAL</small><h3>Up to $100,000 Capital</h3><p>Access simulated trading capital and prove your risk-management skills.</p></div><div className="fw-capital-visual" aria-hidden="true"><img src="/fundedwealth-mark.png" alt="" /><strong>$100,000</strong><span>SIMULATED CAPITAL</span></div></article><article className="fw-bento-card fw-bento-markets"><div className="fw-bento-copy"><small>04 / GLOBAL MARKET ACCESS</small><h3>Global Market Access</h3><p>Trade a broad range of supported instruments across global markets.</p></div><div className="fw-market-visual" aria-hidden="true"><span>GOLD</span><span>EUR/USD</span><span>GBP/USD</span><span>USD/JPY</span><span>BTC/USD</span><span>ETH/USD</span></div></article><article className="fw-bento-card fw-bento-risk"><div className="fw-bento-copy"><small>05 / CLEAR RISK PARAMETERS</small><h3>Transparent Risk Rules</h3><p>Know your drawdown, daily loss, risk and payout parameters before you trade.</p></div><div className="fw-risk-visual" aria-hidden="true"><div><span>DAILY LIMIT</span><b>3.0%</b><i style={{ '--risk-width': '34%' } as React.CSSProperties} /></div><div><span>MAX DRAWDOWN</span><b>5.0%</b><i style={{ '--risk-width': '58%' } as React.CSSProperties} /></div><div><span>RISK SCORE</span><b>LOW</b><i style={{ '--risk-width': '22%' } as React.CSSProperties} /></div></div></article><article className="fw-bento-card fw-bento-community"><div className="fw-bento-copy"><small>06 / TRADER COMMUNITY</small><h3>Built Around Traders</h3><p>Trader support, community resources and an environment designed to help traders stay disciplined.</p></div><div className="fw-community-visual" aria-hidden="true"><img src="/fundedwealth-mark.png" alt="" /><span>THE COLLECTIVE EDGE</span><b>24/7 TRADER SUPPORT</b></div></article></div></section>
 
-      <section id="dashboard" className="section dashboard-section"><div className="section-heading centered"><div><SectionLabel>YOUR EDGE, VISUALIZED</SectionLabel><h2>A console built for <em>clarity.</em></h2></div><p>Every number that matters, visible at a glance. This is a visual preview of the simulated trader experience.</p></div><DashboardPreview programIndex={activeModel} /></section>
+      <section id="dashboard" className="section dashboard-section"><div className="section-heading centered"><div><h2>A console built for <em>clarity.</em></h2></div><p>Every number that matters, visible at a glance. This is a visual preview of the simulated trader experience.</p></div><DashboardPreview programIndex={activeModel} /></section>
 
       <section id="rules" className={`section rules-section${rulesInView ? ' is-inview' : ''}`} ref={rulesRef}>
         <div className="rules-copy">
-          <p className="section-label"><span className="rules-pulse-line" />THE PARAMETERS</p>
-          <h2 className="rules-headline">Clear rules.<br /><em>Sharper decisions.</em></h2>
+          <h2 className="rules-headline">Clear rules. <em>Sharper decisions.</em></h2>
           <p className="rules-lead">Your trading plan deserves a framework that is easy to understand and impossible to misread.</p>
           <a className="button button-outline" href="#challenges">VIEW CHALLENGES <ArrowRight data-icon="inline-end" /></a>
         </div>
@@ -937,7 +913,7 @@ export default function Page() {
         <div className="faq-copy">
           <div className="faq-eyebrow">FAQ</div>
           <SectionLabel>NO NOISE, JUST ANSWERS</SectionLabel>
-          <h2 className="faq-headline faq-motion">Frequently<br /><em>asked.</em></h2>
+          <h2 className="faq-headline faq-motion">Frequently <em>asked.</em></h2>
           <p>Everything you need to make a confident decision about your next challenge.</p>
         </div>
         <div className="faq-list">

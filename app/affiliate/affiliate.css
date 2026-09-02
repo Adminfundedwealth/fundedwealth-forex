@@ -52,6 +52,68 @@
 @media (max-width: 1050px) { .affiliate-hero-panel { padding-inline: 42px; } }
 @media (max-width: 700px) { .affiliate-hero { min-height: 760px; padding: 92px 12px 42px; }.affiliate-hero-panel { min-height: 620px; padding: 58px 16px 28px; border-radius: 22px; }.affiliate-hero-content { gap: 1.15rem; }.affiliate-hero h1 { font-size: clamp(2.75rem, 12.5vw, 4.45rem); line-height: .94; }.affiliate-hero h1 > span { line-height: .94; }.affiliate-hero-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }.affiliate-hero-tab { min-height: 42px; padding: 0 7px; font-size: 8px; }.affiliate-hero-tab:nth-child(4), .affiliate-hero-tab:nth-child(5) { grid-column: auto; } }
 
+/* Referral tier section only. */
+.affiliate-tiers { width: min(100%, 1400px); max-width: 1400px; padding-inline: 40px; }
+.affiliate-tiers .affiliate-section-heading { max-width: none; }
+.affiliate-tiers .affiliate-section-heading h2 { white-space: nowrap; font-size: clamp(2.9rem, 4.4vw, 5.2rem); }
+.affiliate-tiers .affiliate-tier-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.affiliate-tiers .affiliate-tier { min-height: 460px; padding: 30px 28px; }
+@media (max-width: 1050px) { .affiliate-tiers .affiliate-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.affiliate-tiers .affiliate-tier { min-height: 430px; } }
+@media (max-width: 700px) { .affiliate-tiers { padding-inline: 18px; }.affiliate-tiers .affiliate-section-heading h2 { white-space: normal; font-size: clamp(2.55rem, 11vw, 4rem); }.affiliate-tiers .affiliate-tier-grid { grid-template-columns: 1fr; }.affiliate-tiers .affiliate-tier { min-height: 406px; padding: 25px 22px; } }
+
+/* Referral tier scale correction only. */
+.affiliate-tiers { width: calc(100% - 48px) !important; max-width: 1480px !important; padding-inline: 24px; }
+.affiliate-tiers .affiliate-section-heading h2 { white-space: nowrap; }
+.affiliate-tiers .affiliate-tier-grid { gap: 22px; }
+.affiliate-tiers .affiliate-tier { min-height: 520px; padding: 36px 32px; }
+@media (max-width: 1050px) { .affiliate-tiers { width: calc(100% - 36px) !important; }.affiliate-tiers .affiliate-tier-grid { gap: 18px; }.affiliate-tiers .affiliate-tier { min-height: 465px; padding: 32px 28px; } }
+@media (max-width: 700px) { .affiliate-tiers { width: 100% !important; padding-inline: 18px; }.affiliate-tiers .affiliate-section-heading h2 { white-space: normal; }.affiliate-tiers .affiliate-tier-grid { gap: 14px; }.affiliate-tiers .affiliate-tier { min-height: 406px; padding: 25px 22px; } }
+
+/* How It Works scale correction only. */
+.affiliate-process { width: calc(100% - 80px) !important; max-width: 1400px !important; padding-inline: 0; }
+.affiliate-process .affiliate-section-heading { max-width: none; }
+.affiliate-process .affiliate-section-heading h2 { white-space: nowrap; font-size: clamp(56px, 7vw, 100px); }
+.affiliate-process .affiliate-step-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; width: 100%; }
+.affiliate-process .affiliate-step { min-height: 310px; padding: 28px; }
+.affiliate-process .affiliate-step-number { width: 60px; height: 60px; margin-bottom: 48px; font-size: 17px; }
+.affiliate-process .affiliate-step h3 { margin-bottom: 16px; font-size: 21px; }
+.affiliate-process .affiliate-step p { font-size: 14px; line-height: 1.8; }
+@media (max-width: 1050px) { .affiliate-process { width: calc(100% - 56px) !important; }.affiliate-process .affiliate-step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }.affiliate-process .affiliate-step { min-height: 300px; } }
+@media (max-width: 700px) { .affiliate-process { width: 100% !important; padding-inline: 18px; }.affiliate-process .affiliate-section-heading h2 { white-space: normal; font-size: clamp(2.7rem, 12vw, 4.5rem); }.affiliate-process .affiliate-step-grid { grid-template-columns: 1fr; gap: 14px; }.affiliate-process .affiliate-step { min-height: 0; padding: 24px; }.affiliate-process .affiliate-step-number { margin-bottom: 30px; } }
+
+/* Reward the reach scale correction only. */
+.affiliate-rewards { width: min(1400px, calc(100% - 80px)) !important; max-width: 1400px !important; margin-inline: auto; padding-inline: 0; }
+.affiliate-rewards .affiliate-section-heading { max-width: none; }
+.affiliate-rewards .affiliate-section-heading h2 { width: 100%; white-space: nowrap; font-size: clamp(64px, 7vw, 110px); line-height: .95; }
+.affiliate-rewards .affiliate-reward-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; width: 100%; }
+.affiliate-rewards .affiliate-reward { min-height: 410px; padding: 20px; }
+.affiliate-rewards .affiliate-reward-image, .affiliate-rewards .affiliate-reward-icon { height: 190px; margin-bottom: 20px; }
+.affiliate-rewards .affiliate-reward-car .affiliate-reward-image { height: 190px; }
+.affiliate-rewards .affiliate-reward h3 { font-size: 25px; }
+.affiliate-rewards .affiliate-reward p { font-size: 13px; line-height: 1.7; }
+@media (max-width: 1050px) { .affiliate-rewards { width: calc(100% - 56px) !important; }.affiliate-rewards .affiliate-reward-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.affiliate-rewards .affiliate-reward { min-height: 400px; } }
+@media (max-width: 700px) { .affiliate-rewards { width: 100% !important; padding-inline: 18px; }.affiliate-rewards .affiliate-section-heading h2 { white-space: normal; font-size: clamp(2.8rem, 12vw, 4.8rem); }.affiliate-rewards .affiliate-reward-grid { grid-template-columns: 1fr; gap: 14px; }.affiliate-rewards .affiliate-reward { min-height: 0; padding: 16px; }.affiliate-rewards .affiliate-reward-image, .affiliate-rewards .affiliate-reward-icon, .affiliate-rewards .affiliate-reward-car .affiliate-reward-image { height: 190px; } }
+
+/* Affiliate dashboard/console section only. */
+.affiliate-dashboard { width: calc(100% - 80px) !important; max-width: 1400px !important; display: grid; grid-template-columns: 1fr; gap: 48px; padding-inline: 0; }
+.affiliate-dashboard > * { min-width: 0; }
+.affiliate-dashboard-copy { max-width: none; }
+.affiliate-dashboard-copy h2 { width: 100%; white-space: nowrap; font-size: clamp(48px, 4.2vw, 64px); line-height: .95; }
+.affiliate-dashboard-copy > p { max-width: 760px; }
+.affiliate-dashboard .affiliate-console { width: 100%; max-width: 100%; min-width: 0; min-height: 480px; padding: 36px; overflow: hidden; }
+@media (max-width: 1050px) { .affiliate-dashboard { width: calc(100% - 56px) !important; }.affiliate-dashboard .affiliate-console { min-height: 450px; } }
+@media (max-width: 700px) { .affiliate-dashboard { width: 100% !important; grid-template-columns: 1fr; gap: 32px; padding-inline: 18px; }.affiliate-dashboard-copy h2 { white-space: normal; font-size: clamp(2.65rem, 12vw, 4.6rem); }.affiliate-dashboard .affiliate-console { min-height: 0; padding: 20px; } }
+
+/* Large Blueberry-style decorative step numbers, process cards only. */
+.affiliate-process .affiliate-step { position: relative; overflow: hidden; }
+.affiliate-process .affiliate-step::after { position: absolute; z-index: 0; top: 8px; right: 15px; width: 72%; height: 72%; background: radial-gradient(ellipse at center, rgba(107, 67, 255, .18), transparent 68%); content: ''; pointer-events: none; }
+.affiliate-process .affiliate-step-number { position: absolute; z-index: 1; top: 16px; right: 12px; display: block; width: auto; height: auto; margin: 0; border: 0; border-radius: 0; background: linear-gradient(145deg, rgba(146, 108, 255, .08), rgba(88, 44, 194, .34)); background-clip: text; color: transparent; font-family: 'Space Grotesk', sans-serif; font-size: clamp(180px, 15vw, 280px); font-weight: 700; line-height: .8; opacity: .5; pointer-events: none; user-select: none; -webkit-text-stroke: 1px rgba(171, 139, 255, .3); text-shadow: 0 0 26px rgba(105, 64, 255, .22); }
+.affiliate-process .affiliate-step-content { position: relative; z-index: 2; padding-top: 132px; }
+.affiliate-process .affiliate-step-content h3, .affiliate-process .affiliate-step-content p { position: relative; z-index: 2; }
+.affiliate-process .affiliate-step-arrow { z-index: 3; }
+@media (max-width: 1050px) { .affiliate-process .affiliate-step-number { font-size: clamp(170px, 18vw, 230px); }.affiliate-process .affiliate-step-content { padding-top: 132px; } }
+@media (max-width: 700px) { .affiliate-process .affiliate-step-number { top: 12px; right: 10px; font-size: clamp(165px, 44vw, 210px); }.affiliate-process .affiliate-step-content { padding-top: 126px; } }
+
 /* Affiliate page composition: one consistent vertical rhythm from hero to rewards. */
 .affiliate-hero { min-height: 860px; padding: 155px 7% 88px; }
 .affiliate-hero-content { width: min(100%, 850px); }

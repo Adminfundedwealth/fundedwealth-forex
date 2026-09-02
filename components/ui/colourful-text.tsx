@@ -1,6 +1,6 @@
 'use client'
 
-import DepthText from '@/components/DepthText'
+const letterColours = ['#f43f5e', '#f97316', '#facc15', '#22c55e', '#06b6d4', '#3b82f6', '#8b5cf6', '#d946ef']
 
 type ColourfulTextProps = {
   text?: string
@@ -13,9 +13,8 @@ export default function ColourfulText({
 }: ColourfulTextProps) {
   const combinedClassName = [
     'inline-block font-black tracking-[-0.06em] drop-shadow-[0_0_30px_rgba(56,189,248,0.35)]',
-    'bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-blue-400 to-cyan-300',
     className,
   ].join(' ')
 
-  return <span className={combinedClassName}>{text}</span>
+  return <span className={combinedClassName}>{Array.from(text).map((character, index) => <span key={`${character}-${index}`} style={{ color: letterColours[index % letterColours.length] }}>{character}</span>)}</span>
 }
