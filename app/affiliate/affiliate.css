@@ -23,6 +23,35 @@
 @media (max-width: 700px) { .affiliate-header { top: 10px; left: 4%; right: 4%; padding: 7px 11px; }.affiliate-brand { font-size: 11px; }.affiliate-brand img { width: 34px; height: 34px; }.affiliate-brand b { font-size: 9px; }.affiliate-menu-toggle { display: grid; place-items: center; }.affiliate-menu-toggle svg { width: 22px; }.affiliate-nav { position: absolute; top: calc(100% + 8px); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 8px; border: 1px solid var(--affiliate-border); border-radius: 12px; background: rgba(12, 4, 31, .96); box-shadow: 0 20px 40px rgba(0,0,0,.45); }.affiliate-nav.is-open { display: flex; }.affiliate-nav a { padding: 14px; }.affiliate-nav a::after { bottom: 5px; left: 14px; right: 14px; }.affiliate-hero { min-height: 760px; padding: 155px 6% 90px; }.affiliate-hero h1 { font-size: clamp(3rem, 14vw, 5rem); }.affiliate-hero-lead { font-size: 14px; }.affiliate-hero-actions { flex-direction: column; align-items: stretch; }.affiliate-hero-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }.affiliate-hero-tab { min-height: 45px; padding: 0 8px; font-size: 9px; letter-spacing: .03em; }.affiliate-float-card { display: none; }.affiliate-stats-wrap { padding: 0 6% 45px; }.affiliate-stats { grid-template-columns: repeat(2, 1fr); }.affiliate-stat:nth-child(2) { border-right: 0; }.affiliate-stat:nth-child(-n+2) { border-bottom: 1px solid rgba(173,132,255,.18); }.affiliate-stat { padding: 22px 14px; }.affiliate-section, .affiliate-rewards { padding: 70px 6%; }.affiliate-section-heading { margin-bottom: 34px; }.affiliate-section-heading h2, .affiliate-dashboard h2, .affiliate-final h2 { font-size: clamp(2.6rem, 12vw, 4rem); }.affiliate-tier-grid, .affiliate-reward-grid { grid-template-columns: 1fr; }.affiliate-tier { min-height: 0; }.affiliate-step-grid { grid-template-columns: 1fr; }.affiliate-step { min-height: 0; padding: 20px; }.affiliate-step-number { margin-bottom: 25px; }.affiliate-dashboard { grid-template-columns: 1fr; padding-top: 70px; }.affiliate-console { padding: 18px; }.affiliate-console-total strong { font-size: 26px; }.affiliate-console-metrics { flex-wrap: wrap; }.affiliate-console-metrics div { min-width: calc(50% - 10px); }.affiliate-footer { grid-template-columns: 1fr; gap: 18px; padding: 30px 6%; }.affiliate-footer > small { justify-self: start; }.affiliate-footer > div { flex-wrap: wrap; } }
 @media (prefers-reduced-motion: reduce) { .affiliate-page *, .affiliate-page *::before, .affiliate-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }.affiliate-page [data-reveal] { opacity: 1; transform: none; } }
 
+/* Affiliate hero follows the homepage shell: one art layer, one centered rail, one flex rhythm. */
+.affiliate-hero { min-height: 900px; padding: 155px 7.5% 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #03050c; }
+.affiliate-hero::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgba(3,5,12,.62), rgba(3,5,12,.2) 34%, rgba(3,5,12,.38) 70%, rgba(3,5,12,.9)), radial-gradient(ellipse at center, rgba(3,5,12,.08) 18%, rgba(3,5,12,.56) 78%); content: ''; pointer-events: none; }
+.affiliate-hero-art { position: absolute; z-index: 0; inset: 0; overflow: hidden; opacity: .8; }
+.affiliate-hero-art::after { position: absolute; inset: 0; background: radial-gradient(ellipse at center 45%, transparent 12%, rgba(3,5,12,.12) 50%, rgba(3,5,12,.72) 100%); content: ''; }
+.affiliate-hero-art > * { width: 100%; height: 100%; }
+.affiliate-hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; width: min(100%, 1280px); max-width: 1280px; gap: 1.6rem; margin: 0 auto; text-align: center; animation: affiliate-rise .8s ease both; }
+.affiliate-hero h1 { width: min(100%, 980px); font-size: clamp(3rem, 5vw, 6.2rem); line-height: .9; letter-spacing: -.06em; }
+.affiliate-hero h1 > span { line-height: .9; }
+.affiliate-hero-lead { max-width: 620px; margin: 0; line-height: 1.5; }
+.affiliate-float-card, .affiliate-hero-tabs { display: none; }
+@media (max-width: 1050px) { .affiliate-hero { min-height: 820px; } }
+@media (max-width: 700px) { .affiliate-hero { min-height: 760px; padding: 128px 18px 84px; }.affiliate-hero h1 { font-size: clamp(2.8rem, 12.5vw, 4.6rem); line-height: .94; }.affiliate-hero h1 > span { line-height: .94; }.affiliate-hero-lead { font-size: 14px; }.affiliate-hero-actions { flex-direction: column; align-items: stretch; width: min(100%, 340px); } }
+
+/* Blueberry-inspired hero composition using FundedWealth's own colors and content. */
+.affiliate-hero { min-height: 900px; padding: 96px 24px 84px; }
+.affiliate-hero-panel { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; width: min(100%, 1320px); min-height: 700px; padding: 78px 70px 52px; overflow: hidden; border: 1px solid rgba(139, 102, 255, .34); border-radius: 28px; background: linear-gradient(145deg, rgba(26, 12, 59, .96), rgba(11, 7, 29, .96) 72%); box-shadow: inset 0 1px rgba(255,255,255,.09), inset 0 -30px 70px rgba(61, 26, 122, .16), 0 28px 80px rgba(0,0,0,.38), 0 0 45px rgba(91, 79, 255, .12); }
+.affiliate-hero-panel::before { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 22%, rgba(93, 83, 255, .16), transparent 48%), linear-gradient(90deg, transparent, rgba(255, 255, 255, .025), transparent); content: ''; pointer-events: none; }
+.affiliate-hero-content { position: relative; z-index: 1; width: min(100%, 980px); max-width: 980px; gap: 1.35rem; }
+.affiliate-hero h1 { width: 100%; max-width: 980px; font-size: clamp(3.2rem, 5vw, 5.25rem); line-height: .93; letter-spacing: -.06em; }
+.affiliate-hero h1 > span { line-height: .93; }
+.affiliate-hero-lead { max-width: 600px; margin: 0; line-height: 1.55; }
+.affiliate-hero-tabs { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: min(100%, 780px); margin: 54px auto 0; }
+.affiliate-hero-tab { min-height: 43px; padding: 0 11px; border-radius: 999px; font-size: 10px; }
+.affiliate-hero-tab:nth-child(4) { grid-column: 2; }
+.affiliate-hero-tab:nth-child(5) { grid-column: 3; }
+@media (max-width: 1050px) { .affiliate-hero-panel { padding-inline: 42px; } }
+@media (max-width: 700px) { .affiliate-hero { min-height: 760px; padding: 92px 12px 42px; }.affiliate-hero-panel { min-height: 620px; padding: 58px 16px 28px; border-radius: 22px; }.affiliate-hero-content { gap: 1.15rem; }.affiliate-hero h1 { font-size: clamp(2.75rem, 12.5vw, 4.45rem); line-height: .94; }.affiliate-hero h1 > span { line-height: .94; }.affiliate-hero-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }.affiliate-hero-tab { min-height: 42px; padding: 0 7px; font-size: 8px; }.affiliate-hero-tab:nth-child(4), .affiliate-hero-tab:nth-child(5) { grid-column: auto; } }
+
 /* Affiliate page composition: one consistent vertical rhythm from hero to rewards. */
 .affiliate-hero { min-height: 860px; padding: 155px 7% 88px; }
 .affiliate-hero-content { width: min(100%, 850px); }
@@ -52,7 +81,7 @@
 .affiliate-reward-grid { align-items: stretch; }
 .affiliate-reward { min-height: 370px; }
 @media (max-width: 1050px) {
-	.affiliate-hero { min-height: 820px; }
+	.affiliate-hero { min-height: 700px; }
 	.affiliate-float-card-one { left: 2%; }
 	.affiliate-float-card-two { right: 2%; }
 	.affiliate-tier { min-height: 400px; }
@@ -70,4 +99,55 @@
 	.affiliate-step-grid { gap: 12px; }
 	.affiliate-step { min-height: 0; }
 	.affiliate-reward { min-height: 0; }
+}
+
+/* Shared affiliate landing-page geometry. */
+.affiliate-page { --affiliate-container: 1180px; }
+.affiliate-hero { min-height: 700px; padding: 126px 24px 54px; }
+.affiliate-hero-content { width: min(100%, 900px); max-width: 900px; }
+.affiliate-hero h1 { font-size: clamp(2.8rem, 4.8vw, 4.7rem); line-height: .98; letter-spacing: -.055em; }
+.affiliate-hero h1 > span { line-height: .98; }
+.affiliate-hero-lead { max-width: 570px; margin: 22px auto 24px; line-height: 1.65; }
+.affiliate-hero-tabs { width: min(100%, 780px); margin-top: 22px; }
+.affiliate-float-card-one { top: 37%; left: max(24px, calc(50% - 680px)); }
+.affiliate-float-card-two { right: max(24px, calc(50% - 680px)); bottom: 23%; }
+.affiliate-stats-wrap, .affiliate-section, .affiliate-rewards { width: min(100%, var(--affiliate-container)); margin-inline: auto; }
+.affiliate-stats-wrap { padding: 48px 24px 58px; }
+.affiliate-benefits-heading { max-width: 100%; margin: 0 0 24px; }
+.affiliate-benefits-heading h2 { font-size: clamp(2.4rem, 4vw, 4rem); }
+.affiliate-section, .affiliate-rewards { padding: 82px 24px; }
+.affiliate-section-heading { max-width: 650px; margin-bottom: 42px; }
+.affiliate-section-heading h2, .affiliate-dashboard h2, .affiliate-final h2 { line-height: .98; }
+.affiliate-tier-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.affiliate-tier { min-height: 400px; }
+.affiliate-step-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.affiliate-step-row { display: contents; }
+.affiliate-step-row-lower { width: auto; margin: 0; }
+.affiliate-step { min-height: 240px; padding: 22px 18px; }
+.affiliate-step-arrow { right: -18px; }
+.affiliate-rewards { max-width: var(--affiliate-container); }
+.affiliate-reward-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.affiliate-reward { min-height: 350px; }
+.affiliate-dashboard { max-width: var(--affiliate-container); }
+.affiliate-final { min-height: 440px; padding: 82px 24px; }
+@media (max-width: 1050px) {
+	.affiliate-float-card { display: none; }
+	.affiliate-tier-grid, .affiliate-reward-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.affiliate-step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.affiliate-step-row { display: contents; }
+	.affiliate-step-row-lower { width: calc(66.666% - 4px); margin-inline: auto; }
+}
+@media (max-width: 700px) {
+	.affiliate-hero { min-height: 0; padding: 134px 18px 62px; }
+	.affiliate-hero h1 { font-size: clamp(2.85rem, 13vw, 4.6rem); }
+	.affiliate-hero-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+	.affiliate-stats-wrap, .affiliate-section, .affiliate-rewards { width: 100%; padding-right: 18px; padding-left: 18px; }
+	.affiliate-stats-wrap { padding-top: 45px; padding-bottom: 55px; }
+	.affiliate-section, .affiliate-rewards { padding-top: 64px; padding-bottom: 64px; }
+	.affiliate-tier-grid, .affiliate-reward-grid, .affiliate-step-grid { grid-template-columns: 1fr; }
+	.affiliate-tier { min-height: 406px; }
+	.affiliate-step-row-lower { width: 100%; }
+	.affiliate-step { min-height: 0; }
+	.affiliate-reward { min-height: 0; }
+	.affiliate-final { min-height: 390px; padding: 72px 18px; }
 }
