@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { LanguageSwitcher, useLanguage } from '@/components/LanguageProvider'
 
-const navigationItems = [
+type NavigationItem = { label: 'challenges' | 'howItWorks' | 'rules' | 'affiliate' | 'platforms' | 'faq'; href: string; text?: string }
+
+const navigationItems: NavigationItem[] = [
   { label: 'challenges', href: '/#challenges' },
   { label: 'howItWorks', href: '/#how-it-works' },
   { label: 'rules', href: '/rules' },
@@ -46,7 +48,7 @@ export default function Navbar() {
         <div className={`nav-links ${menuOpen ? 'nav-open' : ''}`}>
           {navigationItems.map((item) => <a key={item.href} className={activeItem === item.label ? 'is-active' : ''} href={item.href} aria-current={activeItem === item.label ? 'page' : undefined} onClick={() => setMenuOpen(false)}>{item.text ?? t.nav[item.label as keyof typeof t.nav]}</a>)}
         </div>
-        <div className="nav-actions"><a className="nav-community" href="/#community">{t.nav.community}</a><a className="portal-link" href="/#dashboard">{t.nav.portal}</a><a className="nav-login" href="/#footer">{t.nav.login}</a><LanguageSwitcher /></div>
+        <div className="nav-actions"><a className="nav-community" href="/#community">{t.nav.community}</a><a className="portal-link" href="/#dashboard">{t.nav.portal}</a><a className="nav-login" href="/login">{t.nav.login}</a><LanguageSwitcher /></div>
         <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
     </>
