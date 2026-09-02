@@ -68,10 +68,6 @@ function Brand({ mobile = false }: { mobile?: boolean }) {
   return <a className={`affiliate-brand${mobile ? ' affiliate-brand-mobile' : ''}`} href="/"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex" /><span>FUNDEDWEALTH <b>FOREX</b></span></a>
 }
 
-function Stat({ value, label, Icon }: { value: string; label: string; Icon: typeof TrendingUp }) {
-  return <article className="affiliate-stat" data-reveal><Icon aria-hidden="true" /><strong>{value}</strong><span>{label}</span></article>
-}
-
 export default function AffiliatePage() {
   const [menuOpen, setMenuOpen] = useState(false)
   useReveal()
@@ -102,11 +98,6 @@ export default function AffiliatePage() {
             <div className="affiliate-hero-tabs" aria-label="Affiliate program highlights">{heroTabs.map(({ label, Icon }, index) => <div className="affiliate-hero-tab" style={{ '--delay': `${index * 90}ms` } as React.CSSProperties} key={label}><Icon size={15} aria-hidden="true" /><span>{label}</span></div>)}</div>
           </div>
         </div>
-      </section>
-
-      <section className="affiliate-stats-wrap" aria-label="Affiliate program benefits">
-        <div className="affiliate-section-heading affiliate-benefits-heading" data-reveal><p className="affiliate-eyebrow"><span /> KEY BENEFITS</p><h2>Built to <em>compound.</em></h2><p>Everything you need to turn consistent reach into a partner business with momentum.</p></div>
-        <div className="affiliate-stats"><Stat value="UP TO 50%" label="COMMISSION" Icon={CircleDollarSign} /><Stat value="RECURRING" label="EARNINGS" Icon={TrendingUp} /><Stat value="GLOBAL" label="AUDIENCE" Icon={Users} /><Stat value="24/7" label="PARTNER SUPPORT" Icon={ShieldCheck} /></div>
       </section>
 
       <section className="affiliate-section affiliate-tiers" id="tiers">
