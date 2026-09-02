@@ -45,6 +45,13 @@ const rewards = [
   { sales: '800+ SALES', title: 'PREMIUM CAR', detail: 'Your dream car, fully sponsored.', tone: 'car', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=88' },
 ]
 
+const heroTabs = [
+  { label: 'Transparent Commissions', Icon: ShieldCheck },
+  { label: 'Recurring Earnings', Icon: TrendingUp },
+  { label: 'Real-Time Tracking', Icon: MousePointerClick },
+  { label: 'Up to 50% Commission', Icon: Sparkles },
+]
+
 function useReveal() {
   useEffect(() => {
     const items = document.querySelectorAll<HTMLElement>('[data-reveal]')
@@ -88,10 +95,10 @@ export default function AffiliatePage() {
         <div className="affiliate-orb affiliate-orb-one" aria-hidden="true" /><div className="affiliate-orb affiliate-orb-two" aria-hidden="true" />
         <div className="affiliate-hero-content">
           <p className="affiliate-eyebrow"><span /> FUNDEDWEALTH AFFILIATE PROGRAM <span /></p>
-          <h1>Earn more with <em>every trader</em> you refer.</h1>
+          <h1><span>Earn more with</span><span><em>every trader</em> you refer.</span></h1>
           <p className="affiliate-hero-lead">Turn your audience into recurring earnings with a partner program built for people who know how to move communities forward.</p>
           <div className="affiliate-hero-actions" id="apply"><a className="affiliate-primary" href="mailto:partners@fundedwealth.com">Become an affiliate <ArrowRight size={17} /></a><a className="affiliate-secondary" href="#affiliate-login">Affiliate login <ArrowRight size={17} /></a></div>
-          <div className="affiliate-hero-proof"><ShieldCheck size={16} /> Transparent commissions. Real support. Built to compound.</div>
+          <div className="affiliate-hero-tabs" aria-label="Affiliate program highlights">{heroTabs.map(({ label, Icon }, index) => <div className="affiliate-hero-tab" style={{ '--delay': `${index * 90}ms` } as React.CSSProperties} key={label}><Icon size={15} aria-hidden="true" /><span>{label}</span></div>)}</div>
         </div>
         <div className="affiliate-float-card affiliate-float-card-one"><span>MONTHLY COMMISSION</span><strong>+ 50%</strong><small>APEX TIER</small></div>
         <div className="affiliate-float-card affiliate-float-card-two"><Link2 size={15} /><span>YOUR LINK IS LIVE</span><strong>fw/partner/you</strong></div>
@@ -113,7 +120,7 @@ export default function AffiliatePage() {
 
       <section className="affiliate-rewards" id="rewards">
         <div className="affiliate-section-heading" data-reveal><p className="affiliate-eyebrow"><span /> REWARD THE REACH</p><h2>FundedWealth <em>bonuses.</em></h2><p>Milestones worth sharing. Rewards that make the next referral feel even better.</p></div>
-        <div className="affiliate-reward-grid">{rewards.map(({ sales, title, detail, tone, image, Icon }, index) => <article className={`affiliate-reward affiliate-reward-${tone}`} data-reveal style={{ '--delay': `${index * 80}ms` } as React.CSSProperties} key={sales}>{image ? <div className="affiliate-reward-image"><img src={image} alt={title} loading="lazy" /></div> : <div className="affiliate-reward-icon"><Icon size={34} /></div>}<span className="affiliate-sales-badge">{sales}</span><h3>{title}</h3><p>{detail}</p></article>)}</div>
+        <div className="affiliate-reward-grid">{rewards.map(({ sales, title, detail, tone, image, Icon }, index) => <article className={`affiliate-reward affiliate-reward-${tone}`} data-reveal style={{ '--delay': `${index * 80}ms` } as React.CSSProperties} key={sales}>{image ? <div className="affiliate-reward-image"><img src={image} alt={title} loading="lazy" /></div> : <div className="affiliate-reward-icon">{Icon && <Icon size={34} />}</div>}<span className="affiliate-sales-badge">{sales}</span><h3>{title}</h3><p>{detail}</p></article>)}</div>
       </section>
 
       <section className="affiliate-section affiliate-dashboard" id="affiliate-login">
