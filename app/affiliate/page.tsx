@@ -95,7 +95,7 @@ export default function AffiliatePage() {
         <div className="affiliate-orb affiliate-orb-one" aria-hidden="true" /><div className="affiliate-orb affiliate-orb-two" aria-hidden="true" />
         <div className="affiliate-hero-content">
           <p className="affiliate-eyebrow"><span /> FUNDEDWEALTH AFFILIATE PROGRAM <span /></p>
-          <h1><span>Earn more with</span><span><em>every trader</em> you refer.</span></h1>
+          <h1><span>Earn more</span><span>with</span><span><em>every trader</em></span><span>you refer.</span></h1>
           <p className="affiliate-hero-lead">Turn your audience into recurring earnings with a partner program built for people who know how to move communities forward.</p>
           <div className="affiliate-hero-actions" id="apply"><a className="affiliate-primary" href="mailto:partners@fundedwealth.com">Become an affiliate <ArrowRight size={17} /></a><a className="affiliate-secondary" href="#affiliate-login">Affiliate login <ArrowRight size={17} /></a></div>
           <div className="affiliate-hero-tabs" aria-label="Affiliate program highlights">{heroTabs.map(({ label, Icon }, index) => <div className="affiliate-hero-tab" style={{ '--delay': `${index * 90}ms` } as React.CSSProperties} key={label}><Icon size={15} aria-hidden="true" /><span>{label}</span></div>)}</div>
