@@ -27,7 +27,7 @@ const programs: Program[] = [
   },
   {
     id: 'two-step', icon: '◇', title: '2-Step', subtitle: 'Two measured phases designed to reward consistency.', rules: [
-      { label: 'Profit target', value: '8% / 5% per phase' }, { label: 'Maximum daily loss', value: '3%' }, { label: 'Maximum loss / drawdown', value: '8% evaluation / 6% funded' }, { label: 'Profit share', value: 'Not specified in current program data' }, { label: 'Minimum trading days', value: '5 days per phase' }, { label: 'Maximum trading days', value: 'Unlimited' }, { label: 'Consistency rule', value: 'None' }, { label: 'Payout rules', value: configure }, { label: 'Trading session rules', value: configure }, { label: 'Allowed instruments', value: configure }, { label: 'Position sizing', value: 'Max risk per trade: 1.5%; leverage: 1:30' }, { label: 'News trading', value: configure }, { label: 'Weekend holding', value: configure }, { label: 'EA / bot rules', value: configure }, { label: 'Prohibited trading practices', value: configure },
+      { label: 'Profit target', value: '8% / 5% per phase' }, { label: 'Maximum daily loss', value: '5%' }, { label: 'Maximum loss / drawdown', value: '10%' }, { label: 'Profit share', value: '80% on the Funded Account stage' }, { label: 'Minimum trading days', value: '5 days per stage / 7 funded days before payout eligibility' }, { label: 'Maximum trading days', value: 'Unlimited' }, { label: 'Consistency rule', value: 'None' }, { label: 'Payout rules', value: 'Eligible after 7 funded trading days' }, { label: 'Trading session rules', value: configure }, { label: 'Allowed instruments', value: configure }, { label: 'Position sizing', value: 'Max risk per trade: 3% funded stage; leverage: 1:100 Forex, 1:30 Commodities, 1:2 Crypto' }, { label: 'News trading', value: configure }, { label: 'Weekend holding', value: configure }, { label: 'EA / bot rules', value: configure }, { label: 'Prohibited trading practices', value: configure },
     ],
   },
 ]
@@ -45,7 +45,6 @@ export default function RulesPage() {
 
   return (
     <main className="rules-page">
-      <div className="rules-page-atmosphere" aria-hidden="true"><span /><span /><i /><i /></div>
       <header className="rules-header">
         <a href="/" className="brand brand-with-mark"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex mark" /><span>FUNDEDWEALTH <i>FOREX</i></span></a>
         <nav className="rules-nav" aria-label="Primary navigation">
@@ -55,7 +54,6 @@ export default function RulesPage() {
       </header>
 
       <section className="rules-hero">
-        <p className="rules-kicker"><span />EVALUATION &amp; RISK FRAMEWORK</p>
         <h1>Program trading <em>rules</em></h1>
         <p className="rules-lead">Everything that governs your challenge in one place: profit targets, loss limits, session rules, instruments, sizing, and timelines.</p>
         <div className="rules-hero-actions"><a className="button primary-liquid" href="/#challenges">START EVALUATION <ArrowRight /></a><a className="rules-outline-button" href="/#platforms">VIEW INSTRUMENTS</a><a className="rules-text-button" href="/#faq">FAQ <ArrowRight /></a></div>
@@ -64,10 +62,10 @@ export default function RulesPage() {
       <section className="rules-workspace" aria-label="Trading rules browser">
         <div className="rules-search-wrap"><Search aria-hidden="true" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search rules..." aria-label="Search rules" />{query && <button type="button" onClick={() => setQuery('')} aria-label="Clear search"><X /></button>}</div>
         <div className="rules-tabs" role="tablist" aria-label="Rule programs">
-          {programs.map((program) => program.id === 'flash' || program.id === 'instant' ? <a key={program.id} href={program.id === 'flash' ? '/rules/flash' : '/rules/instant'} role="tab" aria-selected={false} className="rules-tab-link"><span aria-hidden="true">{program.icon}</span>{program.id === 'flash' ? 'Flash Rules' : 'Instant Funding Rules'}</a> : <button key={program.id} type="button" role="tab" aria-selected={activeProgram === program.id} className={activeProgram === program.id ? 'is-active' : ''} onClick={() => setActiveProgram(program.id)}><span aria-hidden="true">{program.icon}</span>{program.id === 'one-step' ? '1-Step Rules' : '2-Step Rules'}</button>)}
+          {programs.map((program) => program.id === 'flash' || program.id === 'instant' || program.id === 'one-step' || program.id === 'two-step' ? <a key={program.id} href={program.id === 'flash' ? '/rules/flash' : program.id === 'instant' ? '/rules/instant' : program.id === 'one-step' ? '/rules/1-step' : '/rules/2-step'} role="tab" aria-selected={false} className="rules-tab-link"><span aria-hidden="true">{program.icon}</span>{program.id === 'flash' ? 'Flash Rules' : program.id === 'instant' ? 'Instant Funding Rules' : program.id === 'one-step' ? '1-Step Rules' : '2-Step Rules'}</a> : <button key={program.id} type="button" role="tab" aria-selected={activeProgram === program.id} className={activeProgram === program.id ? 'is-active' : ''} onClick={() => setActiveProgram(program.id)}><span aria-hidden="true">{program.icon}</span>{program.id === 'one-step' ? '1-Step Rules' : '2-Step Rules'}</button>)}
         </div>
         <div className="rules-notice"><FileWarning /><p><strong>Important:</strong> Breaking a Critical rule (e.g. Daily loss limit, Maximum Loss Limit) disqualifies your evaluation immediately. Hitting the 4% Daily profit cap triggers kill-switch: no new trades for that day.</p></div>
-        <div className="rules-section-heading"><div><p className="rules-kicker"><span />CURRENT PROGRAM</p><h2>{active.title}</h2></div><p>{active.subtitle}</p></div>
+        <div className="rules-section-heading"><div><h2>{active.title}</h2></div><p>{active.subtitle}</p></div>
         <div className="rules-cards">
           <article className={`rules-card ${openCards.includes(active.id) ? 'is-open' : ''}`}>
             <button className="rules-card-header" type="button" onClick={() => toggleCard(active.id)} aria-expanded={openCards.includes(active.id)}><span className="rules-card-icon"><Sparkles /></span><span><strong>{active.title}</strong><small>{active.subtitle}</small></span><ChevronDown /></button>

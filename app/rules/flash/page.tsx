@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ArrowRight, Calculator, ChevronDown, CircleAlert, FileText, ShieldCheck, Zap } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/LanguageProvider'
+import { ProgramTabs } from '@/components/ProgramTabs'
 
 type FlashSection = { title: string; content: 'basics' | 'risk' | 'daily' | 'drawdown' | 'lots' | 'trade' | 'payouts' | 'prohibited' | 'news' | 'holding' | 'commissions' | 'limits' | 'scaling' }
 
@@ -38,7 +39,6 @@ export default function FlashRulesPage() {
 
   return (
     <main className="rules-page flash-rules-page">
-      <div className="rules-page-atmosphere" aria-hidden="true"><span /><span /><i /><i /></div>
       <header className="rules-header">
         <a href="/" className="brand brand-with-mark"><img src="/fundedwealth-mark.png" alt="FundedWealth Forex mark" /><span>FUNDEDWEALTH <i>FOREX</i></span></a>
         <nav className="rules-nav" aria-label="Primary navigation"><a href="/#challenges">CHALLENGES</a><a href="/#how-it-works">HOW IT WORKS</a><a className="is-active" href="/rules" aria-current="page">RULES</a><a href="/#platforms">PLATFORMS</a><a href="/#faq">FAQ</a></nav>
@@ -51,7 +51,7 @@ export default function FlashRulesPage() {
         <div className="rules-hero-actions"><a className="button primary-liquid" href="/#challenges">START FLASH CHALLENGE <ArrowRight /></a><a className="rules-outline-button" href="/rules">BACK TO ALL RULES</a></div>
       </section>
 
-      <section className="rules-workspace flash-rules-workspace" aria-label="Flash trading rules">
+      <section className="rules-workspace flash-rules-workspace" aria-label="Flash trading rules"><ProgramTabs />
         <div className="rules-notice"><CircleAlert /><p><strong>Important:</strong> Breaking a critical rule can disqualify your evaluation immediately. Flash limits and conditions are governed by these rules.</p></div>
 
         <section className="flash-overview glass-rule-panel"><div><p className="rules-kicker"><span />FLASH ACCOUNT OVERVIEW</p><h2>One day. Clear limits.</h2><p>Flash is built for traders who want a compressed evaluation path with transparent risk parameters.</p></div><div className="flash-metric-grid"><div><strong>24H</strong><span>MAXIMUM TRADING PERIOD</span></div><div><strong>4%</strong><span>MAX DRAWDOWN</span></div><div><strong>90%</strong><span>PROFIT SHARE</span></div><div><strong>15%</strong><span>BEST TRADE RULE</span></div></div></section>

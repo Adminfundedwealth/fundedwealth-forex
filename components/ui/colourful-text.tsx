@@ -11,25 +11,11 @@ export default function ColourfulText({
   text = 'Prove Your Edge.',
   className = '',
 }: ColourfulTextProps) {
-  return (
-    <DepthText
-      text={text}
-      layers={26}
-      depth={2.8}
-      faceColor="#F8FAFC"
-      depthColor="#8B5CF6"
-      tilt={6}
-      perspective={1200}
-      autoOrbit={true}
-      orbitSpeed={0.28}
-      fontSize="clamp(2.4rem, 5vw, 7rem)"
-      fontWeight={900}
-      fontFamily="'Inter', 'Segoe UI', sans-serif"
-      className={className}
-      style={{
-        display: 'inline-block',
-        lineHeight: 1,
-      }}
-    />
-  )
+  const combinedClassName = [
+    'inline-block font-black tracking-[-0.06em] drop-shadow-[0_0_30px_rgba(56,189,248,0.35)]',
+    'bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-blue-400 to-cyan-300',
+    className,
+  ].join(' ')
+
+  return <span className={combinedClassName}>{text}</span>
 }

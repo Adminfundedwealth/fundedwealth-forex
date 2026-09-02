@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import MarketTicker from '@/components/MarketTicker'
+import DataRain from '@/components/DataRain'
 import { LanguageSwitcher, useLanguage } from '@/components/LanguageProvider'
 import { CurrencySwitcher, useCurrency } from '@/components/CurrencyProvider'
 import ColourfulText from '@/components/ui/colourful-text'
@@ -108,9 +109,9 @@ const oneStepEvaluationRules = [
   ['MAX DRAWDOWN', '6%'],
   ['DAILY DRAWDOWN', '3%'],
   ['PROFIT TARGET', '10%'],
-  ['MAX RISK/TRADE', '1.5%'],
-  ['MIN DAYS', '5 DAYS'],
-  ['CONSISTENCY', '40%'],
+  ['MAX RISK/TRADE', 'N/A'],
+  ['MIN DAYS', '3 DAYS'],
+  ['CONSISTENCY', 'N/A'],
   ['PROFIT SPLIT', '—'],
   ['LEVERAGE', '1:30'],
   ['TIME LIMIT', 'UNLIMITED'],
@@ -120,10 +121,10 @@ const oneStepFundedRules = [
   ['MAX DRAWDOWN', '6%'],
   ['DAILY DRAWDOWN', '3%'],
   ['PROFIT TARGET', '—'],
-  ['MAX RISK/TRADE', '1.5%'],
-  ['MIN DAYS', '3 DAYS'],
+  ['MAX RISK/TRADE', '3%'],
+  ['MIN DAYS', '7 DAYS BEFORE PAYOUT ELIGIBILITY'],
   ['CONSISTENCY', '—'],
-  ['PROFIT SPLIT', '80%–90%'],
+  ['PROFIT SPLIT', '80%'],
   ['LEVERAGE', '1:30'],
 ] as const
 
@@ -136,26 +137,26 @@ const twoStepChallenges = [
 ] as const
 
 const twoStepEvaluationRules = [
-  ['MAX DRAWDOWN', '8%'],
-  ['DAILY DRAWDOWN', '3%'],
+  ['MAX DRAWDOWN', '10%'],
+  ['DAILY DRAWDOWN', '5%'],
   ['PROFIT TARGET', '8% / 5%'],
   ['CONSISTENCY', 'None'],
-  ['MAX RISK/TRADE', '1.5%'],
+  ['MAX RISK/TRADE', 'N/A'],
   ['MIN DAYS', '5 days / phase'],
   ['PROFIT SPLIT', '—'],
-  ['LEVERAGE', '1:30'],
+  ['LEVERAGE', '1:100'],
   ['TIME LIMIT', 'Unlimited'],
 ] as const
 
 const twoStepFundedRules = [
-  ['MAX DRAWDOWN', '6%'],
-  ['DAILY DRAWDOWN', '3%'],
+  ['MAX DRAWDOWN', '10%'],
+  ['DAILY DRAWDOWN', '5%'],
   ['PROFIT TARGET', '—'],
   ['CONSISTENCY', '—'],
-  ['MAX RISK/TRADE', '1.5%'],
-  ['MIN DAYS', '3 days / phase'],
-  ['PROFIT SPLIT', '80% — First 3 Payouts / 90% — After 3 Payouts'],
-  ['LEVERAGE', '1:30'],
+  ['MAX RISK/TRADE', '3%'],
+  ['MIN DAYS', '7 DAYS BEFORE PAYOUT ELIGIBILITY'],
+  ['PROFIT SPLIT', '80%'],
+  ['LEVERAGE', '1:100'],
 ] as const
 
 const challengeModels = ['FLASH', 'INSTANT', '1 STEP', '2 STEP']
@@ -182,7 +183,7 @@ const journeySteps = [
 const programCards = [
   { number: '01', category: 'THE FLASH PATH', title: 'FLASH', text: 'A compressed evaluation structure for traders who want a shorter challenge path.', metrics: [['FLASH', 'PATH'], ['90%', 'SHARE']], tone: 'program-cyan', Icon: Zap },
   { number: '02', category: 'THE FAST TRACK', title: 'INSTANT', text: 'Skip the evaluation and access a simulated account with risk parameters from day one.', metrics: [['0', 'PHASES'], ['CONFIG', 'SHARE']], tone: 'program-orange', Icon: Gauge },
-  { number: '03', category: 'THE CLASSIC PATH', title: '1 STEP', text: 'One clear evaluation. One focused objective. For traders who prefer directness.', metrics: [['1', 'PHASE'], ['90%', 'SHARE']], tone: 'program-purple', Icon: Layers3 },
+  { number: '03', category: 'THE CLASSIC PATH', title: '1 STEP', text: 'One clear evaluation. One focused objective. For traders who prefer directness.', metrics: [['1', 'PHASE'], ['80%', 'SHARE']], tone: 'program-purple', Icon: Layers3 },
   { number: '04', category: 'THE PROVEN PATH', title: '2 STEP', text: 'Two measured phases designed to reward consistency and protect your downside.', metrics: [['2', 'PHASES'], ['90%', 'SHARE']], tone: 'program-blue', Icon: LineChart },
 ]
 
@@ -249,34 +250,6 @@ function IconFacebook() {
 function IconWhatsApp() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M20.52 3.48A11.84 11.84 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.89c0 2.1.55 4.15 1.6 5.96L.1 23.9l6.2-1.62a11.9 11.9 0 0 0 5.77 1.48h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.18-1.24-6.17-3.44-8.39ZM12.08 21.7h-.01a9.84 9.84 0 0 1-5.02-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.86 9.86 0 0 1-1.51-5.22C2.25 6.44 6.66 2.03 12.08 2.03c2.63 0 5.1 1.03 6.96 2.9a9.8 9.8 0 0 1 2.88 6.97c0 5.42-4.41 9.82-9.84 9.8Zm5.39-7.36c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.97 1.18-.18.2-.36.23-.66.08-.3-.15-1.24-.46-2.36-1.46a8.85 8.85 0 0 1-1.63-2.03c-.17-.3-.02-.46.13-.61.13-.13.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.66-.94-2.27-.25-.59-.5-.51-.69-.52h-.59c-.2 0-.53.08-.81.38-.28.3-1.06 1.04-1.06 2.54s1.09 2.95 1.24 3.15c.15.2 2.14 3.27 5.19 4.59.73.32 1.3.51 1.74.65.73.23 1.4.2 1.93.12.59-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.59-.35Z" /></svg>
-  )
-}
-
-function IconFundedWealthAI() {
-  return <img src="/fundedwealth-mark.png" alt="" aria-hidden="true" />
-}
-
-const whatsappSupportUrl = process.env.NEXT_PUBLIC_WHATSAPP_SUPPORT_URL?.trim() || ''
-const aiSupportUrl = process.env.NEXT_PUBLIC_AI_SUPPORT_URL?.trim() || ''
-
-function SupportControls() {
-  const openAiSupport = () => {
-    if (aiSupportUrl) window.open(aiSupportUrl, '_blank', 'noopener,noreferrer')
-  }
-
-  return (
-    <div className="support-controls">
-      <a
-        className={`support-control support-whatsapp${whatsappSupportUrl ? '' : ' is-unconfigured'}`}
-        href={whatsappSupportUrl || undefined}
-        target={whatsappSupportUrl ? '_blank' : undefined}
-        rel={whatsappSupportUrl ? 'noreferrer' : undefined}
-        aria-label="WhatsApp support"
-        title={whatsappSupportUrl ? 'WhatsApp support' : 'WhatsApp support destination not configured'}
-        onClick={(event) => { if (!whatsappSupportUrl) event.preventDefault() }}
-      ><IconWhatsApp /></a>
-      <button className="support-control support-ai" type="button" aria-label="Open FundedWealth AI support" title={aiSupportUrl ? 'FundedWealth AI support' : 'FundedWealth AI support destination not configured'} onClick={openAiSupport}><IconFundedWealthAI /></button>
-    </div>
   )
 }
 
@@ -570,7 +543,7 @@ function DashboardPreview({ programIndex }: { programIndex: number }) {
             )}
             {tab === 3 && (
               <div className="dash-panel dash-rules">
-                {[['Daily drawdown', '5%'], ['Maximum drawdown', '10%'], ['Profit target', '10%']].map(([label, value]) => (
+                {(programIndex === 2 ? [['Daily drawdown', '3%'], ['Maximum drawdown', '6%'], ['Profit target', '10%']] : [['Daily drawdown', '5%'], ['Maximum drawdown', '10%'], ['Profit target', '10%']]).map(([label, value]) => (
                   <div key={label}><span>{label}</span><strong>{value}</strong></div>
                 ))}
               </div>
@@ -760,17 +733,18 @@ export default function Page() {
         <button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </nav>
 
-      <section id="top" className="hero-section">
+      <section id="top" className="hero-section h-screen w-full flex flex-col overflow-hidden">
         <div className="hero-art" aria-hidden="true">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BcbzDf3Lrqy1m4pKNZ26IjBS8SMEFI.png" alt="" />
-          <div className="planet-atmosphere" aria-hidden="true" />
+          <DataRain />
         </div>
-        <div className="hero-copy">
+        <div className="hero-copy flex-1 flex flex-col justify-center items-center">
           <div className="hero-trust-badge">{t.hero.badge}</div>
           <div className="hero-container">
             <h1 className="saas-heading">
-              <span className="hero-line hero-line-top">Trade Bigger.</span>
-              <ColourfulText text="Prove Your Edge." className="hero-gradient-text" />
+              <span className="hero-line hero-line-top">
+                <span className="hero-line-white">Trade Bigger.</span>
+                <ColourfulText text="Prove Your Edge." className="hero-gradient-text" />
+              </span>
               <span className="hero-line hero-line-bottom">Build Your Capital.</span>
             </h1>
           </div>
@@ -778,9 +752,8 @@ export default function Page() {
           <div className="hero-buttons"><StartChallengeLink className="button primary-liquid" href={checkoutHref}>{t.hero.start} <ArrowRight data-icon="inline-end" /></StartChallengeLink><a className="watch-demo" href="#how-it-works"><span className="play-icon" aria-hidden="true" />{t.hero.demo}</a><a className="trading-rules-button" href="#rules"><FileText data-icon="inline-start" />{t.hero.rules} <ArrowRight data-icon="inline-end" /></a><a className="free-trial-button" href="#challenges"><UsersRound data-icon="inline-start" />{t.hero.trial} <ArrowRight data-icon="inline-end" /></a></div>
           <div className="hero-stats"><div><strong>UP TO 90%</strong><span>PROFIT SHARE</span></div><div><strong>UP TO $100K</strong><span>SIMULATED CAPITAL</span></div><div><strong>24/7</strong><span>TRADER SUPPORT</span></div></div>
         </div>
+        <MarketTicker />
       </section>
-
-      <MarketTicker />
 
       <ComparisonSection />
 
@@ -995,7 +968,6 @@ export default function Page() {
         <section className="footer-legal-disclosure" aria-labelledby="footer-legal-title"><div className="footer-legal-heading"><span /> <h2 id="footer-legal-title">LEGAL &amp; RISK DISCLOSURE</h2></div><div className="footer-legal-grid"><article><small>01&nbsp;&nbsp; SIMULATED TRADING</small><p>All accounts and performance shown on this website are simulated or hypothetical. FundedWealth Forex provides an educational and informational simulated-trading environment and does not provide investment advice, recommendations, or guarantees of future results.</p></article><article><small>02&nbsp;&nbsp; RISK DISCLOSURE</small><p>Trading involves risk. Review the applicable rules and risk parameters before participating. Past performance does not guarantee future results. Funding and payouts are subject to the applicable program rules and compliance requirements.</p></article><article><small>03&nbsp;&nbsp; ELIGIBILITY &amp; AGE</small><p>Services are intended for users aged 18 and older. Users are responsible for ensuring that participation is permitted under the laws and regulations applicable to their location.</p></article><article><small>04&nbsp;&nbsp; RESTRICTED JURISDICTIONS</small><p>FundedWealth Forex does not provide services where participation would be prohibited by applicable law or regulation. Access may be restricted for certain countries, territories, jurisdictions, or persons subject to applicable legal or regulatory restrictions.</p></article></div></section>
         <div className="footer-disclosure"><p className="footer-copyright">© 2026 FUNDEDWEALTH FOREX. ALL RIGHTS RESERVED.</p></div>
       </footer>
-      <SupportControls />
     </main>
   )
 }

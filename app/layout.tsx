@@ -9,13 +9,9 @@ export const metadata: Metadata = {
   description: 'A transparent simulated trading environment built around disciplined risk management.',
   generator: 'FundedWealth Forex',
   icons: {
-    icon: [
-      { url: '/icon.png', type: 'image/png' },
-      { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-    shortcut: '/icon.png',
-    apple: '/icon.png',
+    icon: '/fundedwealth-mark.png',
+    shortcut: '/fundedwealth-mark.png',
+    apple: '/fundedwealth-mark.png',
   },
 }
 

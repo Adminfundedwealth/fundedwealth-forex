@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title">
-  <title id="title">FundedWealth Forex</title>
-  <defs><linearGradient id="forex" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ff4f9a"/><stop offset=".5" stop-color="#a855f7"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs>
-  <image href="/fundedwealth-mark.png" x="8" y="8" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
-  <text x="132" y="54" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="800" letter-spacing="4">FUNDEDWEALTH</text>
-  <text x="239" y="94" fill="url(#forex)" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="13">FOREX</text>
-</svg>

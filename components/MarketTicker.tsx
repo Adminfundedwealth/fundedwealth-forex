@@ -4,24 +4,78 @@ import { useEffect, useRef, useState } from 'react'
 import { getMarketData, formatPrice, formatChangePercent, type MarketInstrument } from '@/lib/market-data'
 import { TrendingDown, TrendingUp } from 'lucide-react'
 
-export default function MarketTicker() {
-  const [instruments, setInstruments] = useState<MarketInstrument[]>([])
+type TickedInstrument = MarketInstrument & { status?: 'up' | 'down' }
+
+export default function MarketTicker({ className = '' }: { className?: string }) {
+  const [prices, setPrices] = useState<TickedInstrument[]>(() => getMarketData().instruments)
   const [isPaused, setIsPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const tickerRef = useRef<HTMLDivElement>(null)
 
-  // Update market data periodically
+  // TODO: Connect to WebSocket/REST API (e.g., Polygon.io or Twelve Data) for live market prices before production launch.
   useEffect(() => {
-    const updateMarketData = () => {
-      const data = getMarketData()
-      setInstruments(data.instruments)
+    const ws = new WebSocket('wss://stream.binance.com:9443/ws/!miniTicker@arr')
+    const symbols = new Map([
+      ['BTCUSDT', ['BTCUSD', 'BTC/USD']],
+      ['ETHUSDT', ['ETHUSD', 'ETH/USD']],
+      ['BNBUSDT', ['BNBUSD', 'BNB/USD']],
+      ['SOLUSDT', ['SOLUSD', 'SOL/USD']],
+      ['XRPUSDT', ['XRPUSD', 'XRP/USD']],
+    ])
+
+    ws.onmessage = (event) => {
+      const updates = JSON.parse(event.data) as Array<{ s: string; c: string; o: string; P?: string }>
+      const liveUpdates = updates.filter((update) => symbols.has(update.s))
+      if (!liveUpdates.length) return
+
+      setPrices((currentPrices) => {
+        const nextPrices = [...currentPrices]
+        liveUpdates.forEach((update) => {
+          const mapping = symbols.get(update.s)
+          if (!mapping) return
+          const [symbol, displayName] = mapping
+          const price = Number(update.c)
+          const openPrice = Number(update.o)
+          if (!Number.isFinite(price) || !Number.isFinite(openPrice)) return
+          const existingIndex = nextPrices.findIndex((instrument) => instrument.symbol === symbol)
+          const previousPrice = existingIndex >= 0 ? nextPrices[existingIndex].price : price
+          const change = price - openPrice
+          const changePercent = Number.isFinite(Number(update.P)) ? Number(update.P) : (change / openPrice) * 100
+          const instrument: TickedInstrument = {
+            ...(existingIndex >= 0 ? nextPrices[existingIndex] : {
+              symbol,
+              displayName,
+              change: 0,
+              changePercent: 0,
+              timestamp: 0,
+              marketStatus: 'OPEN' as const,
+            }),
+            price,
+            change,
+            changePercent,
+            timestamp: Date.now(),
+            marketStatus: 'OPEN',
+            status: price === previousPrice ? undefined : price > previousPrice ? 'up' : 'down',
+          }
+          if (existingIndex >= 0) nextPrices[existingIndex] = instrument
+          else nextPrices.push(instrument)
+        })
+        return nextPrices
+      })
     }
 
-    updateMarketData() // Initial update
-    const interval = setInterval(updateMarketData, 5000) // Update every 5 seconds
-
-    return () => clearInterval(interval)
+    return () => ws.close()
   }, [])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPrices((currentPrices) => currentPrices.some((instrument) => instrument.status)
+        ? currentPrices.map((instrument) => ({ ...instrument, status: undefined }))
+        : currentPrices)
+    }, 500)
+
+    return () => clearTimeout(timeout)
+  }, [prices])
 
   // Check for prefers-reduced-motion preference
   useEffect(() => {
@@ -39,32 +93,24 @@ export default function MarketTicker() {
   const handleMouseEnter = () => setIsPaused(true)
   const handleMouseLeave = () => setIsPaused(false)
 
-  const animationDuration = prefersReducedMotion ? 0 : 46
-
   return (
     <div
-      className={`market-ticker${isPaused ? ' is-paused' : ''}${prefersReducedMotion ? ' prefers-reduced-motion' : ''}`}
+      className={`market-ticker absolute bottom-0 left-0 w-full overflow-hidden border-t border-white/10 bg-[#0B0F19] z-30${isPaused ? ' is-paused' : ''}${prefersReducedMotion ? ' prefers-reduced-motion' : ''}${className ? ` ${className}` : ''}`}
       role="region"
       aria-label="Live market ticker"
       aria-live="polite"
       aria-atomic="false"
     >
       <div
-        className="market-ticker-wrap"
+        className="market-ticker-wrap overflow-hidden w-full"
         ref={tickerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={
-          !prefersReducedMotion
-            ? ({ '--ticker-duration': `${animationDuration}s` } as React.CSSProperties)
-            : undefined
-        }
       >
-        <div className="market-ticker-track">
-          {/* Render instruments twice for seamless infinite scroll */}
+        <div className="market-ticker-track flex w-max animate-ticker">
           {[0, 1].map((copy) => (
             <div key={copy} className="market-instruments-group" aria-hidden={copy === 1 ? true : undefined}>
-              {instruments.map((instrument) => (
+              {prices.map((instrument) => (
                 <MarketInstrumentTile key={`${copy}-${instrument.symbol}`} instrument={instrument} />
               ))}
             </div>
@@ -75,7 +121,7 @@ export default function MarketTicker() {
   )
 }
 
-function MarketInstrumentTile({ instrument }: { instrument: MarketInstrument }) {
+function MarketInstrumentTile({ instrument }: { instrument: TickedInstrument }) {
   const isOpen = instrument.marketStatus === 'OPEN'
   const isPositive = instrument.changePercent >= 0
   const isNeutral = instrument.changePercent === 0
@@ -90,7 +136,7 @@ function MarketInstrumentTile({ instrument }: { instrument: MarketInstrument }) 
       {/* Symbol and Price */}
       <div className="market-tile-content">
         <div className="market-symbol">{instrument.displayName}</div>
-        <div className="market-price">{formatPrice(instrument.price)}</div>
+        <div className={`market-price${instrument.status ? ` market-price-tick-${instrument.status}` : ''}`}>{formatPrice(instrument.price)}</div>
       </div>
 
       {/* Change Indicator */}
