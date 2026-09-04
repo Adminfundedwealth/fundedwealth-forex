@@ -34,15 +34,25 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     setRatesReady(true)
 
     const refresh = async () => {
-      try {
-        const response = await fetch('https://api.frankfurter.app/latest?from=USD', { cache: 'no-store' })
-        if (!response.ok) throw new Error('Exchange rate request failed')
-        const data = await response.json() as { rates?: Record<string, number> }
-        const nextRates = { ...fallbackRates, ...Object.fromEntries(Object.entries(data.rates || {}).filter(([code, value]) => code in fallbackRates && Number.isFinite(value))) } as Record<CurrencyCode, number>
-        setRates(nextRates)
-        window.localStorage.setItem(RATES_KEY, JSON.stringify({ rates: nextRates, savedAt: Date.now() } satisfies StoredRates))
-      } catch {
-        // The cached or bundled rates keep pricing usable when the provider is unavailable.
+      const endpoints = [
+        'https://open.er-api.com/v6/latest/USD',
+        'https://api.exchangerate.host/latest?base=USD',
+      ]
+
+      for (const endpoint of endpoints) {
+        try {
+          const response = await fetch(endpoint, { cache: 'no-store' })
+          if (!response.ok) throw new Error('Exchange rate request failed')
+          const data = await response.json() as { rates?: Record<string, number> }
+          const nextRates = { ...fallbackRates, ...Object.fromEntries(Object.entries(data.rates || {}).filter(([code, value]) => code in fallbackRates && Number.isFinite(value))) } as Record<CurrencyCode, number>
+          if (Object.keys(nextRates).length > 0) {
+            setRates(nextRates)
+            window.localStorage.setItem(RATES_KEY, JSON.stringify({ rates: nextRates, savedAt: Date.now() } satisfies StoredRates))
+            return
+          }
+        } catch {
+          // Try the next supported source if the remote endpoint is blocked or unavailable.
+        }
       }
     }
     if (!cached || Date.now() - cached.savedAt > RATE_TTL) void refresh()

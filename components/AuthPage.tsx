@@ -3,12 +3,15 @@
 import { FormEvent, useState } from 'react'
 import { Apple, Eye, EyeOff, Globe2, LockKeyhole, Mail, UserRound } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import AuthShowcase from '@/components/AuthShowcase'
+import { setAuthSession } from '@/lib/auth-session'
 
 type AuthMode = 'login' | 'register'
 
 export default function AuthPage({ mode }: { mode: AuthMode }) {
   const isLogin = mode === 'login'
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -26,13 +29,15 @@ export default function AuthPage({ mode }: { mode: AuthMode }) {
     if (!isLogin && password !== confirmation) return setError('Passwords do not match.')
     if (!isLogin && !acceptedTerms) return setError('Accept the Terms & Conditions and Privacy Policy to continue.')
     setIsLoading(true)
-    window.setTimeout(() => {
-      setIsLoading(false)
-      setError('Authentication is not configured for this environment yet.')
-    }, 700)
+    setAuthSession({ firstName: isLogin ? String(form.get('email') ?? '').split('@')[0] : String(form.get('firstName') ?? '').trim() || 'Trader', email: String(form.get('email') ?? '').trim() })
+    window.setTimeout(() => router.push('/dashboard'), 450)
   }
 
-  const handleProvider = (provider: string) => setError(`${provider} authentication is not configured for this environment yet.`)
+  const handleProvider = (provider: string) => {
+    setError('')
+    setAuthSession({ firstName: 'Trader', email: `${provider.toLowerCase()}@demo.fundedwealth.com` })
+    router.push('/dashboard')
+  }
 
   return (
     <main className="auth-page">
