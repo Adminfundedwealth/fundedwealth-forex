@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
+@import '../node_modules/shadcn/dist/tailwind.css';
 
 body:has(.forex-dashboard), body.dashboard-route { background: #05030d; }
 body:has(.forex-dashboard) .site-nav, body:has(.forex-dashboard) .product-switcher, body.dashboard-route .site-nav, body.dashboard-route .product-switcher { display: none; }
